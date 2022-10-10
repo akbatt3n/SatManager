@@ -69,7 +69,8 @@ public class Universe : MonoBehaviour {
 
         // for each satellite object in the container, add its name to the list
         foreach (Transform child in satContainer.transform) {
-            string temp = child.GetComponent<Satellite>().name;
+            string temp = child.GetComponent<Satellite>().satName;
+            Debug.Log(temp);
             satListEntry = Instantiate(satListEntryPrefab, satList.transform);
             satListEntry.GetComponentInChildren<Text>().text = temp;
             satListEntry.name = temp;
@@ -78,6 +79,8 @@ public class Universe : MonoBehaviour {
             satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
             satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
             satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
+            satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
+            satListEntry.GetComponent<satListEntryScript>().selectSat();
         }
     }
 
@@ -167,7 +170,13 @@ public class Universe : MonoBehaviour {
 
     public void launchSatellite(string name, string type, int alt, int inc, int raan, int fuel, int cost) {
 
+        if (!checkSatNameUnique(name)) {
+            Debug.Log("satellite name not unique");
+            return;
+        }
+
         float r = alt + pRadius; // r is in km
+        float raanRad = raan * Mathf.Deg2Rad;
         
         GameObject newSatObj;
         switch (type) {
@@ -191,16 +200,16 @@ public class Universe : MonoBehaviour {
 
         Vector3 newPos;
         if (raan >= 0 && raan <= 90) {
-            newPos = new Vector3((r * Mathf.Cos(raan)), (0), (r * Mathf.Sin(raan)));
+            newPos = new Vector3((r * Mathf.Cos(raanRad)), (0), (r * Mathf.Sin(raanRad)));
         }
         else if (raan > 90 && raan <= 180) {
-            newPos = new Vector3(-(r * Mathf.Cos(raan)), (0), (r * Mathf.Sin(raan)));
+            newPos = new Vector3(-(r * Mathf.Cos(raanRad)), (0), (r * Mathf.Sin(raanRad)));
         }
         else if (raan > 180 && raan <= 270) {
-            newPos = new Vector3(-(r * Mathf.Cos(raan)), (0), -(r * Mathf.Sin(raan)));
+            newPos = new Vector3(-(r * Mathf.Cos(raanRad)), (0), -(r * Mathf.Sin(raanRad)));
         }
         else if (raan > 270 && raan < 360) {
-            newPos = new Vector3((r * Mathf.Cos(raan)), (0), -(r * Mathf.Sin(raan)));
+            newPos = new Vector3((r * Mathf.Cos(raanRad)), (0), -(r * Mathf.Sin(raanRad)));
         }
         else {
             Debug.Log("raan field broken or something");
@@ -237,5 +246,22 @@ public class Universe : MonoBehaviour {
                 return;
         }
 
+        satListEntry = Instantiate(satListEntryPrefab, satList.transform);
+        satListEntry.GetComponentInChildren<Text>().text = name;
+        satListEntry.name = name;
+        satListEntry.GetComponent<satListEntryScript>().satellite = newSatObj.gameObject;
+        satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
+        satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
+        satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
+        satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
+    }
+
+    public bool checkSatNameUnique(string name) {
+        foreach (Transform child in satContainer.transform) {
+            if (name == child.GetComponent<Satellite>().satName) {
+                return false;
+            }
+        }
+        return true;
     }
 }

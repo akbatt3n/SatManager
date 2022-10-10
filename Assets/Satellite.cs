@@ -48,21 +48,19 @@ public class Satellite : MonoBehaviour {
 
     bool manueverQueued = false;
 
-    void Awake() {
-        primaryObj = GameObject.FindWithTag("earth");
-        primary = primaryObj.GetComponent<Primary>();
-    }
-
     void Start() {
         // this currently requires the z position be zero
         if (circular) {
-            r = 1000 * scaleFactor * Vector3.Distance(transform.position, primary.transform.position);
+            r = 1000 * scaleFactor * transform.position.magnitude;
             float v = Mathf.Sqrt(Universe.Instance.G * Universe.Instance.pMass / r);
             if (transform.position.x < 0) {
                 v = -v;
             }
             velocity.Set(0, 0, v/scaleFactor);
         }
+
+        primaryObj = GameObject.FindWithTag("earth");
+        primary = primaryObj.GetComponent<Primary>();
     }
     
     void Update() {
