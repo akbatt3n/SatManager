@@ -42,6 +42,11 @@ public class NewSatMenu : MonoBehaviour {
 
     public void launch() {
 
+        if (nameField.text == "") {
+            Debug.Log("Name field is empty");
+            return;
+        }
+
         if (!int.TryParse(altitudeField.text, System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out altitude)) {
             Debug.Log("alt field invalid, value: " + altitudeField.text);
             return;

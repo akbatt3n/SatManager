@@ -70,7 +70,6 @@ public class Universe : MonoBehaviour {
         // for each satellite object in the container, add its name to the list
         foreach (Transform child in satContainer.transform) {
             string temp = child.GetComponent<Satellite>().satName;
-            Debug.Log(temp);
             satListEntry = Instantiate(satListEntryPrefab, satList.transform);
             satListEntry.GetComponentInChildren<Text>().text = temp;
             satListEntry.name = temp;
@@ -80,7 +79,7 @@ public class Universe : MonoBehaviour {
             satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
             satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
             satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
-            satListEntry.GetComponent<satListEntryScript>().selectSat();
+            child.gameObject.GetComponent<Satellite>().listEntry = satListEntry;
         }
     }
 
@@ -254,6 +253,7 @@ public class Universe : MonoBehaviour {
         satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
         satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
         satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
+        newSat.listEntry = satListEntry;
     }
 
     public bool checkSatNameUnique(string name) {
@@ -263,5 +263,9 @@ public class Universe : MonoBehaviour {
             }
         }
         return true;
+    }
+
+    public void destroySat(GameObject satelliteObj) {
+
     }
 }

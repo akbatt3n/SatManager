@@ -19,6 +19,8 @@ public class Satellite : MonoBehaviour {
     public GameObject primaryObj;
     public Primary primary;
 
+    public GameObject listEntry;
+
     public Vector3 velocity; // km/s
     public Vector3 gravity;
     public Vector3 acceleration;
@@ -70,6 +72,11 @@ public class Satellite : MonoBehaviour {
 
         // update distance from primary's center, in meters
         r = 1000 * scaleFactor * Vector3.Distance(transform.position, primary.transform.position);
+
+        // check if satellite is too low
+        if ((r/1000) <= Universe.Instance.pRadius) {
+            destroyMyself();
+        }
 
         // get direction, normalize, then scale to equal real-life force of gravity
         posVector = (transform.position - primary.transform.position) * scaleFactor;
@@ -232,6 +239,11 @@ public class Satellite : MonoBehaviour {
     public void hideOrbit() {
         GetComponent<TrailRenderer>().startWidth = 0.0f;
         GetComponent<LineRenderer>().startWidth = 0.0f;
+    }
+
+    public void destroyMyself() {
+        Destroy(listEntry);
+        Destroy(this.gameObject);
     }
 
 }
