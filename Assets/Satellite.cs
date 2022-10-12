@@ -96,6 +96,7 @@ public class Satellite : MonoBehaviour {
             velocity += gravity/M * timeFactor / 1000;
 
             // air resistance
+            // floats are not accurate enough for the last 2, but maybe this applys some perturbations
             if (altitude < 600) {
                 if (altitude < 25)          velocity -= (velocity * 0.05f * timeFactor);
                 else if (altitude < 50)     velocity -= (velocity * 0.005f * timeFactor);
