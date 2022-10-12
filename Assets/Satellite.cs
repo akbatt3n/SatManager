@@ -14,7 +14,8 @@ public class Satellite : MonoBehaviour {
     // satellite mass, kg
     public float M = 1000;
     // distance to primary
-    public float r;
+    public float r; // meters
+    public float altitude; // km
 
     public GameObject primaryObj;
     public Primary primary;
@@ -22,6 +23,7 @@ public class Satellite : MonoBehaviour {
     public GameObject listEntry;
 
     public Vector3 velocity; // km/s
+    public float velMag;
     public Vector3 gravity;
     public Vector3 acceleration;
     public bool circular;
@@ -72,9 +74,10 @@ public class Satellite : MonoBehaviour {
 
         // update distance from primary's center, in meters
         r = 1000 * scaleFactor * Vector3.Distance(transform.position, primary.transform.position);
+        altitude = r/1000 - Universe.Instance.pRadius;
 
         // check if satellite is too low
-        if ((r/1000) <= Universe.Instance.pRadius) {
+        if (altitude <= 0) {
             destroyMyself();
         }
 
@@ -83,15 +86,30 @@ public class Satellite : MonoBehaviour {
         gravity = posVector.normalized;
         gravity = -1 * gravity * (Universe.Instance.G * M * Universe.Instance.pMass / (r*r));
 
-        // get acceleration due to gravity
+        
         if (timeScale != 0) {
-            acceleration = (gravity/M);
-
             if (timeScale < 1) timeScale = 1;
-            velocity += acceleration * (Time.deltaTime * Universe.Instance.timeScale) / 1000;        
-            transform.position += velocity * (Time.deltaTime * Universe.Instance.timeScale) / scaleFactor;
+
+            float timeFactor = (Time.deltaTime * Universe.Instance.timeScale);
+
+            // get acceleration due to gravity and apply it
+            velocity += gravity/M * timeFactor / 1000;
+
+            // air resistance
+            if (altitude < 600) {
+                if (altitude < 25)          velocity -= (velocity * 0.05f * timeFactor);
+                else if (altitude < 50)     velocity -= (velocity * 0.005f * timeFactor);
+                else if (altitude < 75)     velocity -= (velocity * 0.0004f * timeFactor);
+                else if (altitude < 100)    velocity -= (velocity * 0.00003f * timeFactor);
+                else if (altitude < 150)    velocity -= (velocity * 0.000002f * timeFactor);
+                else if (altitude < 200)    velocity -= (velocity * 0.000001f * timeFactor);
+                else if (altitude < 400)    velocity -= (velocity * 0.0000001f * timeFactor);
+                else                        velocity -= (velocity * 0.00000001f * timeFactor);
+            }
+            transform.position += velocity * timeFactor / scaleFactor;
         }
 
+        velMag = velocity.magnitude;
         updateOrbitalElements();
 
         // point at the earth

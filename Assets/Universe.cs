@@ -221,8 +221,6 @@ public class Universe : MonoBehaviour {
         newVelocity = Vector3.Cross(newPos, Vector3.up).normalized;
         newVelocity *= Mathf.Sqrt(G * pMass / (r * 1000)) / scaleFactor;
         newVelocity = Quaternion.AngleAxis(-inc, newPos) * newVelocity;
-        Debug.Log("initial velocity: " + newVelocity.ToString());
-        Debug.Log("alt: " + alt + ", inc: " + inc + ", raan: " + raan);
         newSat.velocity = newVelocity;
         newSat.satName = name;
 
