@@ -6,7 +6,7 @@ public class Satellite : MonoBehaviour {
 
     public string type;
     public string satName;
-    public float fuel = 2000; // measured in deltaV becuase its a game not a simulator
+    public float fuel = 2000; // measured in m/s deltaV becuase its a game not a simulator
 
     // factor to convert km to unity units
     public int scaleFactor = 1000;
@@ -199,6 +199,7 @@ public class Satellite : MonoBehaviour {
 
     public void manuever(string direction, float deltaV) {
 
+        //deltaV comes in as km/s
         // manueverQueued keeps the player from pausing and applying several manuevers all at once
         if (manueverQueued==false) {
 
@@ -237,7 +238,7 @@ public class Satellite : MonoBehaviour {
                     default:
                         break;
                 }
-                fuel -= deltaV;
+                fuel -= deltaV * 1000;
 
                 if (timeScale == 0) {
                     manueverQueued = true;
