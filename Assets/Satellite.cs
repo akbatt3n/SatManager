@@ -203,7 +203,7 @@ public class Satellite : MonoBehaviour {
         // manueverQueued keeps the player from pausing and applying several manuevers all at once
         if (manueverQueued==false) {
 
-            if (deltaV > fuel) {
+            if (deltaV * 1000 > fuel) {
                 Debug.Log("not enough fuel");
             }
             else {
