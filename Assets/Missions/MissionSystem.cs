@@ -24,10 +24,10 @@ public class MissionSystem : MonoBehaviour {
     }
 
     public void addMission() {
-        float chanceComm = 0.40;
-        float chanceImage = 0.20;
-        float chanceExp = 0.30;
-        float chanceGrapple = 0.10;
+        float chanceComm = 0.40f;
+        float chanceImage = 0.20f;
+        float chanceExp = 0.30f;
+        float chanceGrapple = 0.10f;
 
         float roll = Random.Range(0f, 1f);
 

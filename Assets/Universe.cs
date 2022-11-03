@@ -19,6 +19,12 @@ public class Universe : MonoBehaviour {
         }
     }
 
+    // containers for active missions
+    public GameObject commMissionBucket;
+    public GameObject imageMissionBucket;
+    public GameObject grappleMissionBucket;
+    public GameObject experimentMissionBucket;
+
     // gravitational constant
     public float G = 6.67430e-11F;
 
@@ -181,6 +187,7 @@ public class Universe : MonoBehaviour {
         switch (type) {
             case "Comm":
                 newSatObj = Instantiate(commSatPrefab, satContainer.transform);
+                newSatObj.GetComponent<commPayload>().commMissions = commMissionBucket;
                 break;
             case "Experiment":
                 newSatObj = Instantiate(commSatPrefab, satContainer.transform);

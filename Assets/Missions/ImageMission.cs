@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscreteMission : MonoBehaviour {
+public class ImageMission : MonoBehaviour {
 
-    public bool checkComplete() {
-
+    public void complete() {
+        
     }
 }
