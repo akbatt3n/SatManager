@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// used to rotate the Sun around the Earth, simulating their real-life movement
 public class BodyRotation : MonoBehaviour {
     
     private float degPerSec = 0.000011415525114155251f;
