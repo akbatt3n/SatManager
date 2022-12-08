@@ -5,9 +5,14 @@ using UnityEngine;
 public class CommMission : MonoBehaviour {
 
 	int sf;
+	// reward in thousands of dollars. needs to be balanced
+	public int minReward = 10;
+	public int maxReward = 200;
 
 	public GameObject point1;
 	public GameObject point2;
+
+	public int reward;
 
 	void Start() {
 		sf = Universe.Instance.scaleFactor;
@@ -49,7 +54,15 @@ public class CommMission : MonoBehaviour {
 		point2.transform.position = new Vector3(6371 / sf, 0, 0);
 		point2.transform.Rotate(Vector3.up, lon);
 		point2.transform.Rotate(new Vector3(0, 0, 1), lat, Space.Self);
+
+		reward = Random.Range(minReward, maxReward+1);
 	}
 
+	public void complete() {
+		// reward money
+		// remove list entry
+		// delete self
+		Destroy(this.gameObject);
+	}
     
 }

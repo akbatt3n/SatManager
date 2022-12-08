@@ -46,22 +46,22 @@ public class MissionSystem : MonoBehaviour {
     }
 
     public void newCommMission() {
-        Instantiate(commMissionPrefab, transform);
+        GameObject newMission = Instantiate(commMissionPrefab, transform);
         // add to list, popup, etc.
     }
 
     public void newImageMission() {
-        Instantiate(imageMissionPrefab, transform);
+        GameObject newMission = Instantiate(imageMissionPrefab, transform);
         // add to list, popup, etc.
     }
 
     public void newExperimentMission() {
-        Instantiate(experimentMissionPrefab, transform);
+        GameObject newMission = Instantiate(experimentMissionPrefab, transform);
         // add to list, popup, etc.
     }
 
     public void newGrappleMission() {
-        Instantiate(grappleMissionPrefab, transform);
+        GameObject newMission = Instantiate(grappleMissionPrefab, transform);
         // add to list, popup, etc.
     }
 
