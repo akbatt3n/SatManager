@@ -5,6 +5,7 @@ using UnityEngine;
 public class CommMission : MonoBehaviour {
 
 	int sf;
+
 	// reward in thousands of dollars. needs to be balanced
 	public int minReward = 10;
 	public int maxReward = 200;
@@ -13,6 +14,10 @@ public class CommMission : MonoBehaviour {
 	public GameObject point2;
 
 	public int reward;
+
+	float maxOffset = 10f;
+	float minOffset = -2f;
+	int offsetRolls = 5;
 
 	void Start() {
 		sf = Universe.Instance.scaleFactor;
@@ -31,8 +36,8 @@ public class CommMission : MonoBehaviour {
 		float offset = 0f;
 		// create a somewhat Gaussian distribution for the offset. Maximum 90 degree separation, but that's pretty unlikely
 		// Also a chance to have the offset be negative
-		for (int i = 0; i < 5; i++) {
-			offset += Random.Range(-2f, 18f);
+		for (int i = 0; i < offsetRolls; i++) {
+			offset += Random.Range(minOffset, maxOffset);
 		}
 		// 50/50 chance to flip the sign.
 		// For visualizing the probability distribution, this creates a curve made from 2 Gaussian-ish distributions with some overlap.
@@ -44,8 +49,8 @@ public class CommMission : MonoBehaviour {
 
 		// repeat above for latitude. 
 		offset = 0f;
-		for (int i = 0; i < 5; i++) {
-			offset += Random.Range(-2f, 18f);
+		for (int i = 0; i < offsetRolls; i++) {
+			offset += Random.Range(minOffset, maxOffset);
 		}
 		if (Random.Range(0, 2) == 1) {
 			offset *= -1;

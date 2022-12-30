@@ -1,3 +1,7 @@
+// This script/object is used to hold all the global variables different objects need to interact with
+// such as the mass of the Earth, how fast time is moving, and references to other game objects.
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,9 +44,12 @@ public class Universe : MonoBehaviour {
     // radius of Earth, km
     public float pRadius = 6371F;
 
+    // money the player has, in thousands of dollars
+    public int playerMoney = 100;
+
 
     //---------------------
-    // UI Functions
+    // UI variables
     //---------------------
 
     public Text speedReadout;
@@ -57,10 +64,20 @@ public class Universe : MonoBehaviour {
     public GameObject deltaVInput;
     public GameObject directionInput;
 
+    public int trailTime = 50;
+
+    // --------------------
+    // satellite prefabs
+    // --------------------
+
     public GameObject imageSatPrefab;
     public GameObject commSatPrefab;
+    public GameObject experimentPrefab;
+    public GameObject grapplePrefab;
 
-    public int trailTime = 50;
+    // --------------------
+    // Functions
+    // --------------------
 
     private void Start() {
 
@@ -188,6 +205,7 @@ public class Universe : MonoBehaviour {
             case "Comm":
                 newSatObj = Instantiate(commSatPrefab, satContainer.transform);
                 newSatObj.GetComponent<commPayload>().commMissions = commMissionBucket;
+                newSatObj.GetComponent<Satellite>().type = type;
                 break;
             case "Experiment":
                 newSatObj = Instantiate(commSatPrefab, satContainer.transform);
@@ -254,11 +272,11 @@ public class Universe : MonoBehaviour {
         satListEntry.GetComponentInChildren<Text>().text = name;
         satListEntry.name = name;
         satListEntry.GetComponent<satListEntryScript>().satellite = newSatObj.gameObject;
-        satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
         satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
         satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
         satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
         newSat.listEntry = satListEntry;
+        // satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
     }
 
     public bool checkSatNameUnique(string name) {
