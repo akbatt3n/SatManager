@@ -139,7 +139,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234806070192056125}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -182,7 +182,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.101249695
+        value: 0.03
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -858,11 +858,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d024393cc3cc5074aa541cd7f44401b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugMode: 0
   commMissions: {fileID: 0}
   sensorMaxAngle: 45
   FOVRadius: 0
   footprint: {fileID: 0}
-  minMissionAngle: 5
+  minElevation: 5
+  halfAngle: 0
 --- !u!114 &7986525520042194513
 MonoBehaviour:
   m_ObjectHideFlags: 0

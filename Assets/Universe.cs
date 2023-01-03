@@ -212,6 +212,8 @@ public class Universe : MonoBehaviour {
                 break;
             case "Imagery":
                 newSatObj = Instantiate(imageSatPrefab, satContainer.transform);
+                newSatObj.GetComponent<imagePayload>().imageMissions = imageMissionBucket;
+                newSatObj.GetComponent<Satellite>().type = type;
                 break;
             case "Grappler":
                 newSatObj = Instantiate(commSatPrefab, satContainer.transform);

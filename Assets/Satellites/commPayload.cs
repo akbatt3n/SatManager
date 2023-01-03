@@ -26,8 +26,7 @@ public class commPayload : MonoBehaviour {
 
     RaycastHit hit1;
     RaycastHit hit2;
-    public float halfAngle;
-
+    float halfAngle;
     float sf;
 
     void Start() {

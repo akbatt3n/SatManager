@@ -96,7 +96,7 @@ public class Satellite : MonoBehaviour {
             velocity += gravity/M * timeFactor / 1000;
 
             // air resistance
-            // floats are not accurate enough for the last 2, but maybe this applys some perturbations
+            // floats are not accurate enough for the last 2, but maybe this applies some perturbations
             if (altitude < 600) {
                 if (altitude < 25)          velocity -= (velocity * 0.05f * timeFactor);
                 else if (altitude < 50)     velocity -= (velocity * 0.005f * timeFactor);
@@ -254,16 +254,30 @@ public class Satellite : MonoBehaviour {
     public void showOrbit() {
         GetComponent<TrailRenderer>().startWidth = 0.1f;
         GetComponent<LineRenderer>().startWidth = 0.03f;
-        if (type == "Comm") {
-            GetComponent<commPayload>().showFootprint();
+        switch (type) {
+            case "Comm":
+                GetComponent<commPayload>().showFootprint();
+                break;
+            case "Imagery":
+                GetComponent<imagePayload>().showFootprint();
+                break;
+            default:
+                break;
         }
     }
 
     public void hideOrbit() {
         GetComponent<TrailRenderer>().startWidth = 0.0f;
         GetComponent<LineRenderer>().startWidth = 0.0f;
-        if (type == "Comm") {
-            GetComponent<commPayload>().hideFootprint();
+        switch (type) {
+            case "Comm":
+                GetComponent<commPayload>().hideFootprint();
+                break;
+            case "Imagery":
+                GetComponent<imagePayload>().hideFootprint();
+                break;
+            default:
+                break;
         }
     }
 
