@@ -82,6 +82,7 @@ public class Universe : MonoBehaviour {
     private void Start() {
 
         // set time scale read out
+        changeSpeed();
         if (timeScale != 0) speedReadout.text = "Time Scale: " + timeScale;
         else speedReadout.text = "Paused";
 
@@ -198,7 +199,7 @@ public class Universe : MonoBehaviour {
         }
 
         float r = alt + pRadius; // r is in km
-        float raanRad = raan * Mathf.Deg2Rad;
+        float raanRad = (float) raan * Mathf.PI / 180;
         
         GameObject newSatObj;
         switch (type) {
@@ -224,24 +225,7 @@ public class Universe : MonoBehaviour {
         }
         Satellite newSat = newSatObj.GetComponent<Satellite>();
 
-        Vector3 newPos;
-        if (raan >= 0 && raan <= 90) {
-            newPos = new Vector3((r * Mathf.Cos(raanRad)), (0), (r * Mathf.Sin(raanRad)));
-        }
-        else if (raan > 90 && raan <= 180) {
-            newPos = new Vector3(-(r * Mathf.Cos(raanRad)), (0), (r * Mathf.Sin(raanRad)));
-        }
-        else if (raan > 180 && raan <= 270) {
-            newPos = new Vector3(-(r * Mathf.Cos(raanRad)), (0), -(r * Mathf.Sin(raanRad)));
-        }
-        else if (raan > 270 && raan < 360) {
-            newPos = new Vector3((r * Mathf.Cos(raanRad)), (0), -(r * Mathf.Sin(raanRad)));
-        }
-        else {
-            Debug.Log("raan field broken or something");
-            newPos = new Vector3(0, 0, 0);
-        }
-        newPos /= scaleFactor;
+        Vector3 newPos = new Vector3((r * Mathf.Cos(raanRad)), (0), (r * Mathf.Sin(raanRad))) / scaleFactor;
         newSatObj.transform.position = newPos;
 
         Vector3 newVelocity;

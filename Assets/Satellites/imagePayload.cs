@@ -20,6 +20,11 @@ public class imagePayload : MonoBehaviour {
     // might let the missions decide this
     public float minElevation = 35;
 
+    // cool-down for completing missions - only complete if timer is below 0
+    // needs to be balanced
+    public int cooldown = 200;
+    public int maxCooldown = 500;
+
     RaycastHit hit1;
     RaycastHit hit2;
     float halfAngle;
@@ -32,8 +37,12 @@ public class imagePayload : MonoBehaviour {
 
     void Update() {
 
+        if (Universe.Instance.timeScale == 0) {
+            return;
+        }
+
         // display field of view
-        if (footprint.enabled && Universe.Instance.timeScale != 0) {
+        if (footprint.enabled) {
 
             // If Raycast returns true, the satellite FOV is sensor limited (not horizon limited)
             if (Physics.Raycast(transform.position, Vector3.RotateTowards(transform.forward, transform.right, sensorMaxAngle*Mathf.PI/180, 0f), out hit1, transform.position.magnitude)) {
@@ -57,15 +66,22 @@ public class imagePayload : MonoBehaviour {
         }
 
         // search for missions to complete
-        foreach (Transform mission in imageMissions.transform) {
-            ms = transform.position - mission.position;
+        if (cooldown <= 0) {
+            foreach (Transform mission in imageMissions.transform) {
+                ms = transform.position - mission.position;
 
-            if (Vector3.Angle(-mission.position, ms) > (90 + minElevation)) {
-                if (Vector3.Angle(-transform.position, -ms) < sensorMaxAngle) {
-                    // mark mission complete
-                    // mission.GetComponent<mission>().complete();
+                if (Vector3.Angle(-mission.position, ms) > (90 + minElevation)) {
+                    if (Vector3.Angle(-transform.position, -ms) < sensorMaxAngle) {
+                        // mark mission complete
+                        // mission.GetComponent<mission>().complete();
+                        cooldown = maxCooldown;
+                        break;
+                    }
                 }
             }
+        }
+        else {
+            cooldown -= Universe.Instance.timeScale;
         }
         
     }

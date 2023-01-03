@@ -24,6 +24,11 @@ public class commPayload : MonoBehaviour {
     // might let the missions decide this
     public float minElevation = 5;
 
+    // cool-down for completing missions - only complete if timer is below 0
+    // needs to be balanced
+    public int cooldown = 200;
+    public int maxCooldown = 200;
+
     RaycastHit hit1;
     RaycastHit hit2;
     float halfAngle;
@@ -36,8 +41,12 @@ public class commPayload : MonoBehaviour {
 
     void Update() {
 
+        if (Universe.Instance.timeScale == 0) {
+            return;
+        }
+
         // display field of view
-        if (footprint.enabled && Universe.Instance.timeScale != 0) {
+        if (footprint.enabled) {
 
             // If Raycast returns true, the satellite FOV is sensor limited (not horizon limited)
             if (Physics.Raycast(transform.position, Vector3.RotateTowards(transform.forward, transform.right, sensorMaxAngle*Mathf.PI/180, 0f), out hit1, transform.position.magnitude)) {
@@ -61,18 +70,25 @@ public class commPayload : MonoBehaviour {
         }
 
         // search for missions to complete
-        foreach (Transform mission in commMissions.transform) {
-            ms1 = transform.position - mission.GetChild(0).position;
-            ms2 = transform.position - mission.GetChild(1).position;
+        if (cooldown <= 0) {
+            foreach (Transform mission in commMissions.transform) {
+                ms1 = transform.position - mission.GetChild(0).position;
+                ms2 = transform.position - mission.GetChild(1).position;
 
-            if (Vector3.Angle(-mission.GetChild(0).position, ms1) > (90 + minElevation) && 
-                Vector3.Angle(-mission.GetChild(1).position, ms2) > (90 + minElevation)) {
-                if (Vector3.Angle(-transform.position, -ms1) > sensorMaxAngle &&
-                    Vector3.Angle(-transform.position, -ms2) > sensorMaxAngle) {
-                    // mark mission complete
-                    mission.GetComponent<CommMission>().complete();
+                if (Vector3.Angle(-mission.GetChild(0).position, ms1) > (90 + minElevation) && 
+                    Vector3.Angle(-mission.GetChild(1).position, ms2) > (90 + minElevation)) {
+                    if (Vector3.Angle(-transform.position, -ms1) > sensorMaxAngle &&
+                        Vector3.Angle(-transform.position, -ms2) > sensorMaxAngle) {
+                        // mark mission complete
+                        mission.GetComponent<CommMission>().complete();
+                        cooldown = maxCooldown;
+                        break;
+                    }
                 }
             }
+        }
+        else {
+            cooldown -= Universe.Instance.timeScale;
         }
         
     }
