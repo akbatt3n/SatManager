@@ -10,8 +10,6 @@ public class ImageMission : MonoBehaviour {
     public int minReward = 10;
     public int maxReward = 200;
 
-    public GameObject point1;
-
     public int reward;
 
     float maxOffset = 10f;
@@ -25,9 +23,9 @@ public class ImageMission : MonoBehaviour {
         float lat = Random.Range(-89.0f, 89.0f);
 
         // point the X-axis in a random direction (from above), then move forward to the surface of the Earth
-        point1.transform.Rotate(new Vector3(0, 1, 0), lon);
-        point1.transform.Rotate(new Vector3(0, 0, 1), lat, Space.Self);
-        point1.transform.Translate((6371f / sf), 0, 0, Space.Self);
+        transform.Rotate(new Vector3(0, 1, 0), lon);
+        transform.Rotate(new Vector3(0, 0, 1), lat, Space.Self);
+        transform.Translate((6371f / sf), 0, 0, Space.Self);
 
         reward = Random.Range(minReward, maxReward+1);
     }

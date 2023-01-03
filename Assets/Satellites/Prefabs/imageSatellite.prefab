@@ -184,7 +184,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.03
+        value: 0.04
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -888,3 +888,5 @@ MonoBehaviour:
   FOVRadius: 0
   footprint: {fileID: 0}
   minElevation: 35
+  cooldown: 200
+  maxCooldown: 500

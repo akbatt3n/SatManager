@@ -69,11 +69,10 @@ public class imagePayload : MonoBehaviour {
         if (cooldown <= 0) {
             foreach (Transform mission in imageMissions.transform) {
                 ms = transform.position - mission.position;
-
-                if (Vector3.Angle(-mission.position, ms) > (90 + minElevation)) {
+                if (Vector3.Angle(mission.position, ms) < (90 - minElevation)) {
                     if (Vector3.Angle(-transform.position, -ms) < sensorMaxAngle) {
                         // mark mission complete
-                        // mission.GetComponent<mission>().complete();
+                        mission.GetComponent<ImageMission>().complete();
                         cooldown = maxCooldown;
                         break;
                     }

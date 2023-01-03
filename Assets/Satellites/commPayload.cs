@@ -27,7 +27,7 @@ public class commPayload : MonoBehaviour {
     // cool-down for completing missions - only complete if timer is below 0
     // needs to be balanced
     public int cooldown = 200;
-    public int maxCooldown = 200;
+    public int maxCooldown = 400;
 
     RaycastHit hit1;
     RaycastHit hit2;
@@ -75,12 +75,14 @@ public class commPayload : MonoBehaviour {
                 ms1 = transform.position - mission.GetChild(0).position;
                 ms2 = transform.position - mission.GetChild(1).position;
 
-                if (Vector3.Angle(-mission.GetChild(0).position, ms1) > (90 + minElevation) && 
-                    Vector3.Angle(-mission.GetChild(1).position, ms2) > (90 + minElevation)) {
-                    if (Vector3.Angle(-transform.position, -ms1) > sensorMaxAngle &&
-                        Vector3.Angle(-transform.position, -ms2) > sensorMaxAngle) {
+                if (Vector3.Angle(mission.GetChild(0).position, ms1) < (90 - minElevation) && 
+                    Vector3.Angle(mission.GetChild(1).position, ms2) < (90 - minElevation)) {
+                    Debug.Log("position angles pass");
+                    if (Vector3.Angle(-transform.position, -ms1) < sensorMaxAngle &&
+                        Vector3.Angle(-transform.position, -ms2) < sensorMaxAngle) {
                         // mark mission complete
                         mission.GetComponent<CommMission>().complete();
+                        Debug.Log("mission completed");
                         cooldown = maxCooldown;
                         break;
                     }
