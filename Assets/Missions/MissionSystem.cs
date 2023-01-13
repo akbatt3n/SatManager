@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissionSystem : MonoBehaviour {
 
@@ -9,6 +10,14 @@ public class MissionSystem : MonoBehaviour {
     public GameObject imageMissionPrefab;
     public GameObject experimentMissionPrefab;
     public GameObject grappleMissionPrefab;
+
+    public GameObject commMissionBucket;
+    public GameObject imageMissionBucket;
+    public GameObject experimentMissionBucket;
+    public GameObject grappleMissionBucket;
+
+    public GameObject missionListEntryPrefab;
+    public GameObject missionList;
 
     void Start() {
         InvokeRepeating("timerUpdate", 10f, 1f);
@@ -46,23 +55,27 @@ public class MissionSystem : MonoBehaviour {
     }
 
     public void newCommMission() {
-        GameObject newMission = Instantiate(commMissionPrefab, transform);
-        // add to list, popup, etc.
+        GameObject newMission = Instantiate(commMissionPrefab, commMissionBucket.transform);
+        GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
+        newEntry.GetComponentInChildren<Text>().text = "Data Relay";
     }
 
     public void newImageMission() {
-        GameObject newMission = Instantiate(imageMissionPrefab, transform);
-        // add to list, popup, etc.
+        GameObject newMission = Instantiate(imageMissionPrefab, imageMissionBucket.transform);
+        GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
+        newEntry.GetComponentInChildren<Text>().text = "Imagery";
     }
 
     public void newExperimentMission() {
-        GameObject newMission = Instantiate(experimentMissionPrefab, transform);
-        // add to list, popup, etc.
+        GameObject newMission = Instantiate(experimentMissionPrefab, experimentMissionBucket.transform);
+        GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
+        newEntry.GetComponentInChildren<Text>().text = "Experiment";
     }
 
     public void newGrappleMission() {
-        GameObject newMission = Instantiate(grappleMissionPrefab, transform);
-        // add to list, popup, etc.
+        GameObject newMission = Instantiate(grappleMissionPrefab, grappleMissionBucket.transform);
+        GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
+        newEntry.GetComponentInChildren<Text>().text = "Object Grapple";
     }
 
 }
