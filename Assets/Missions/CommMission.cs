@@ -13,6 +13,11 @@ public class CommMission : MonoBehaviour {
 	public GameObject point1;
 	public GameObject point2;
 
+	public Material pointMaterial;
+	public Material highlightedPointMaterial;
+
+	public bool selected = false;
+
 	public int reward;
 
 	float maxOffset = 10f;
@@ -62,6 +67,17 @@ public class CommMission : MonoBehaviour {
 		point2.transform.Translate((6371f / sf), 0, 0, Space.Self);
 
 		reward = Random.Range(minReward, maxReward+1);
+	}
+
+	public void toggleHighlight() {
+		if (selected) {
+			point1.GetComponent<MeshRenderer>().material = highlightedPointMaterial;
+			point2.GetComponent<MeshRenderer>().material = highlightedPointMaterial;
+		}
+		else {
+			point1.GetComponent<MeshRenderer>().material = pointMaterial;
+			point2.GetComponent<MeshRenderer>().material = pointMaterial;
+		}
 	}
 
 	public void complete() {

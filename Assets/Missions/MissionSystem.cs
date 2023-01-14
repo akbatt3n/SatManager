@@ -19,6 +19,8 @@ public class MissionSystem : MonoBehaviour {
     public GameObject missionListEntryPrefab;
     public GameObject missionList;
 
+    public bool commOnly = false;
+
     void Start() {
         InvokeRepeating("timerUpdate", 10f, 1f);
     }
@@ -33,6 +35,11 @@ public class MissionSystem : MonoBehaviour {
     }
 
     public void addMission() {
+        if (commOnly) {
+            newCommMission();
+            return;
+        }
+
         float chanceComm = 0.40f;
         float chanceImage = 0.20f;
         float chanceExp = 0.30f;
@@ -58,6 +65,9 @@ public class MissionSystem : MonoBehaviour {
         GameObject newMission = Instantiate(commMissionPrefab, commMissionBucket.transform);
         GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
         newEntry.GetComponentInChildren<Text>().text = "Data Relay";
+        newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
+        newEntry.GetComponent<MissionEntryScript>().mission = newMission;
+        newEntry.GetComponent<MissionEntryScript>().missionType = "comm";
     }
 
     public void newImageMission() {

@@ -395,6 +395,7 @@
 "Assets/UI/DetailsPanel.cs"
 "Assets/UI/directionToggle.cs"
 "Assets/UI/ManeuverPanel.cs"
+"Assets/UI/MissionEntryScript.cs"
 "Assets/UI/NewSatMenu.cs"
 "Assets/UI/satListEntryScript.cs"
 "Assets/Universe.cs"
