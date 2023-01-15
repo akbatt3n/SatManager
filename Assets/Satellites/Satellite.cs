@@ -200,7 +200,7 @@ public class Satellite : MonoBehaviour {
     public void manuever(string direction, float deltaV) {
 
         //deltaV comes in as km/s
-        // manueverQueued keeps the player from pausing and applying several manuevers all at once
+        // manueverQueued keeps the player from pausing and applying several maneuvers all at once
         if (manueverQueued==false) {
 
             if (deltaV * 1000 > fuel) {
@@ -227,12 +227,12 @@ public class Satellite : MonoBehaviour {
                         break;
                     case "radial-out":
                         // in direction of the cross product of velocity and angular velocity
-                        // should pivot the orbit clockwise about the location of the manuever
+                        // should pivot the orbit clockwise about the location of the maneuver
                         velocity += deltaV * (Vector3.Cross(velocity, hVector).normalized);
                         break;
                     case "radial-in":
                         // opposite direction of the cross product of velocity and angular velocity
-                        // should pivot the orbit counter-clockwise about the location of the manuever
+                        // should pivot the orbit counter-clockwise about the location of the maneuver
                         velocity += deltaV * -(Vector3.Cross(velocity, hVector).normalized);
                         break;
                     default:

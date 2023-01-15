@@ -17,8 +17,9 @@ public class DetailsPanel : MonoBehaviour {
     public void updateValues() {
         satScript = satellite.GetComponent<Satellite>();
 
-        satName.GetComponent<Text>().text = satScript.satName;
-        satType.GetComponent<Text>().text = satScript.type;
+        satName.GetComponent<Text>().text = "Name:    " + satScript.satName;
+        satType.GetComponent<Text>().text = "Payload: " + satScript.type;
+        satFuel.GetComponent<Text>().text = "ΔV:      " + satScript.fuel + " m/s";
 
         semiMajor.GetComponent<Text>().text = "a = " + satScript.a.ToString("F1");
         eccentricity.GetComponent<Text>().text = "e = " + satScript.e.ToString("F3");
@@ -60,8 +61,9 @@ public class DetailsPanel : MonoBehaviour {
         }
 
         else if (!satListToggle.GetComponent<ToggleGroup>().AnyTogglesOn()) {
-            satName.GetComponent<Text>().text = "";
-            satType.GetComponent<Text>().text = "";
+            satName.GetComponent<Text>().text = "Name:    ";
+            satType.GetComponent<Text>().text = "Payload: ";
+            satFuel.GetComponent<Text>().text = "ΔV:      ";
 
             semiMajor.GetComponent<Text>().text = "a = ";
             eccentricity.GetComponent<Text>().text = "e = ";
