@@ -18,6 +18,7 @@ public class MissionSystem : MonoBehaviour {
 
     public GameObject missionListEntryPrefab;
     public GameObject missionList;
+    public GameObject missionDetailsWindow;
 
     public bool commOnly = false;
 
@@ -68,24 +69,37 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "comm";
+        newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
     }
 
     public void newImageMission() {
         GameObject newMission = Instantiate(imageMissionPrefab, imageMissionBucket.transform);
         GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
         newEntry.GetComponentInChildren<Text>().text = "Imagery";
+        newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
+        newEntry.GetComponent<MissionEntryScript>().mission = newMission;
+        newEntry.GetComponent<MissionEntryScript>().missionType = "image";
+        newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
     }
 
     public void newExperimentMission() {
         GameObject newMission = Instantiate(experimentMissionPrefab, experimentMissionBucket.transform);
         GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
         newEntry.GetComponentInChildren<Text>().text = "Experiment";
+        newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
+        newEntry.GetComponent<MissionEntryScript>().mission = newMission;
+        newEntry.GetComponent<MissionEntryScript>().missionType = "exp";
+        newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
     }
 
     public void newGrappleMission() {
         GameObject newMission = Instantiate(grappleMissionPrefab, grappleMissionBucket.transform);
         GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
         newEntry.GetComponentInChildren<Text>().text = "Object Grapple";
+        newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
+        newEntry.GetComponent<MissionEntryScript>().mission = newMission;
+        newEntry.GetComponent<MissionEntryScript>().missionType = "grapple";
+        newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
     }
 
 }
