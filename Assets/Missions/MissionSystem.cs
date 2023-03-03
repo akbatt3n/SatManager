@@ -80,6 +80,7 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "image";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newEntry.init();
     }
 
     public void newExperimentMission() {
@@ -90,6 +91,7 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "exp";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newEntry.init();
     }
 
     public void newGrappleMission() {
@@ -100,6 +102,7 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "grapple";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newEntry.init();
     }
 
 }
