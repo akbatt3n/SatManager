@@ -8,11 +8,11 @@ public class MissionEntryScript : MonoBehaviour {
     public GameObject mission;
     public GameObject missionDetailsWindow;
     public string missionType; // will take 1 of 4 values: "comm", "image", "exp", or "grapple"
-    public Component detailsType;
-    public Component detailsDesc;
-    public Component detailsReward;
+    public Text detailsType;
+    public Text detailsDesc;
+    public Text detailsReward;
 
-    public void init() {
+    void Start() {
         if (missionType == "comm") {
             detailsType = missionDetailsWindow.transform.Find("MissionType").GetComponent<Text>();
             detailsDesc = missionDetailsWindow.transform.Find("Description").GetComponent<Text>();
