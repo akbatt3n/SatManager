@@ -887,6 +887,6 @@ MonoBehaviour:
   sensorMaxAngle: 45
   FOVRadius: 0
   footprint: {fileID: 0}
-  minElevation: 35
+  minElevation: 0
   cooldown: 200
   maxCooldown: 500

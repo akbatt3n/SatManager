@@ -9,6 +9,7 @@ public class CommMission : MonoBehaviour {
 	// reward in thousands of dollars. needs to be balanced
 	public int minReward = 10;
 	public int maxReward = 200;
+	public int reward;
 
 	public GameObject point1;
 	public GameObject point2;
@@ -16,9 +17,9 @@ public class CommMission : MonoBehaviour {
 	public Material pointMaterial;
 	public Material highlightedPointMaterial;
 
-	public bool selected = false;
+	public GameObject listEntry;
 
-	public int reward;
+	public bool selected = false;
 
 	float maxOffset = 10f;
 	float minOffset = -2f;
@@ -84,6 +85,7 @@ public class CommMission : MonoBehaviour {
 		// reward money
 		// remove list entry
 		// delete self
+		listEntry.GetComponent<MissionEntryScript>().delete();
 		Destroy(this.gameObject);
 	}
     

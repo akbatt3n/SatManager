@@ -77,12 +77,10 @@ public class commPayload : MonoBehaviour {
 
                 if (Vector3.Angle(mission.GetChild(0).position, ms1) < (90 - minElevation) && 
                     Vector3.Angle(mission.GetChild(1).position, ms2) < (90 - minElevation)) {
-                    Debug.Log("position angles pass");
                     if (Vector3.Angle(-transform.position, -ms1) < sensorMaxAngle &&
                         Vector3.Angle(-transform.position, -ms2) < sensorMaxAngle) {
                         // mark mission complete
                         mission.GetComponent<CommMission>().complete();
-                        Debug.Log("mission completed");
                         cooldown = maxCooldown;
                         break;
                     }

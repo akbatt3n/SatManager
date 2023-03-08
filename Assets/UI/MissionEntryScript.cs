@@ -13,14 +13,16 @@ public class MissionEntryScript : MonoBehaviour {
     public Text detailsReward;
 
     void Start() {
-        if (missionType == "comm") {
-            detailsType = missionDetailsWindow.transform.Find("MissionType").GetComponent<Text>();
-            detailsDesc = missionDetailsWindow.transform.Find("Description").GetComponent<Text>();
-            detailsReward = missionDetailsWindow.transform.Find("Reward").GetComponent<Text>();
-        }
+        detailsType = missionDetailsWindow.transform.Find("MissionType").GetComponent<Text>();
+        detailsDesc = missionDetailsWindow.transform.Find("Description").GetComponent<Text>();
+        detailsReward = missionDetailsWindow.transform.Find("Reward").GetComponent<Text>();
     }
 
     public void toggleSelection() {
+        // 1st if/else figure out the type of mission, as the different mission types have different component names
+        // Then, sets or erases text if the entry is selected or not.
+        // Finally, toggles the sphere that represents the mission location (comm & image missions only)
+
         if (missionType == "comm") {
             if (GetComponent<Toggle>().isOn) {
                 mission.GetComponent<CommMission>().selected = true;
@@ -34,9 +36,30 @@ public class MissionEntryScript : MonoBehaviour {
                 detailsDesc.text = "";
                 detailsReward.text = "";
             }
-            
             mission.GetComponent<CommMission>().toggleHighlight();
-
         }
+
+        else if (missionType == "image") {
+            if (GetComponent<Toggle>().isOn) {
+                mission.GetComponent<ImageMission>().selected = true;
+                detailsType.text = "Ground Imaging";
+                detailsDesc.text = "Use a imaging satellite to take a picture of a specific point.";
+                detailsReward.text = "$" + mission.GetComponent<ImageMission>().reward;
+            }
+            else {
+                mission.GetComponent<ImageMission>().selected = false;
+                detailsType.text = "";
+                detailsDesc.text = "";
+                detailsReward.text = "";
+            }
+            mission.GetComponent<ImageMission>().toggleHighlight();
+        }
+    }
+
+    public void delete() {
+        detailsType.text = "";
+        detailsDesc.text = "";
+        detailsReward.text = "";
+        Destroy(this.gameObject);
     }
 }

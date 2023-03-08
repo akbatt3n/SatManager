@@ -12,13 +12,13 @@ public class imagePayload : MonoBehaviour {
     Vector3 ms;
     
     // maximum angle away from Nadir the sensor can see (degrees)
-    public float sensorMaxAngle = 45;
+    public float sensorMaxAngle = 25;
     public float FOVRadius;
     public DecalProjector footprint;
 
     // the minimum angle the mission location supports (degrees above the horizon)
     // might let the missions decide this
-    public float minElevation = 35;
+    public float minElevation = 5;
 
     // cool-down for completing missions - only complete if timer is below 0
     // needs to be balanced
@@ -70,7 +70,9 @@ public class imagePayload : MonoBehaviour {
             foreach (Transform mission in imageMissions.transform) {
                 ms = transform.position - mission.position;
                 if (Vector3.Angle(mission.position, ms) < (90 - minElevation)) {
+                    Debug.Log("Min mission elevation pass");
                     if (Vector3.Angle(-transform.position, -ms) < sensorMaxAngle) {
+                        Debug.Log("Sensor max angle pass");
                         // mark mission complete
                         mission.GetComponent<ImageMission>().complete();
                         cooldown = maxCooldown;

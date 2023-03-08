@@ -20,10 +20,14 @@ public class MissionSystem : MonoBehaviour {
     public GameObject missionList;
     public GameObject missionDetailsWindow;
 
+    // only 1 of these should be set to true at a time
     public bool commOnly = false;
+    public bool imageOnly = false;
+    public bool experimentOnly = false;
+    public bool grappleOnly = false;
 
     void Start() {
-        InvokeRepeating("timerUpdate", 10f, 1f);
+        InvokeRepeating("timerUpdate", 5f, 1f);
     }
 
     void timerUpdate() {
@@ -38,6 +42,18 @@ public class MissionSystem : MonoBehaviour {
     public void addMission() {
         if (commOnly) {
             newCommMission();
+            return;
+        }
+        else if (imageOnly) {
+            newImageMission();
+            return;
+        }
+        else if (experimentOnly) {
+            newExperimentMission();
+            return;
+        }
+        else if (grappleOnly) {
+            newGrappleMission();
             return;
         }
 
@@ -70,6 +86,7 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "comm";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newMission.GetComponent<CommMission>().listEntry = newEntry;
     }
 
     public void newImageMission() {
@@ -80,6 +97,7 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "image";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newMission.GetComponent<ImageMission>().listEntry = newEntry;
     }
 
     public void newExperimentMission() {
