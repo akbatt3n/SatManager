@@ -590,7 +590,7 @@ MonoBehaviour:
   commMissionBucket: {fileID: 2072467860}
   imageMissionBucket: {fileID: 1411290335}
   grappleMissionBucket: {fileID: 990977993}
-  experimentMissionBucket: {fileID: 897282048}
+  experimentMissionBucket: {fileID: 0}
   G: 6.6743e-11
   scaleFactor: 1000
   timeScale: 1
@@ -6737,37 +6737,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890934273}
   m_CullTransparentMesh: 1
---- !u!1 &897282048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 897282049}
-  m_Layer: 0
-  m_Name: experimentMissions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &897282049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897282048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1256917743}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &922641956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,7 +7365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1256917743}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996448204
 GameObject:
@@ -9572,18 +9541,15 @@ MonoBehaviour:
   newMissionTime: 0
   commMissionPrefab: {fileID: 5273746021998962700, guid: 668bdf68bfaa9f548a481e7864230708, type: 3}
   imageMissionPrefab: {fileID: 8935938367904245680, guid: 4a4a9370ccc33d646854cf34abc31ef5, type: 3}
-  experimentMissionPrefab: {fileID: 5492301913524226787, guid: 2f4502be44906fe4db9351b173cee06a, type: 3}
   grappleMissionPrefab: {fileID: 8750928370289281140, guid: f71b7ea819ffbd948ba629ac3ff42d47, type: 3}
   commMissionBucket: {fileID: 2072467860}
   imageMissionBucket: {fileID: 1411290335}
-  experimentMissionBucket: {fileID: 897282048}
   grappleMissionBucket: {fileID: 990977993}
   missionListEntryPrefab: {fileID: 8187731341980805201, guid: 7e0bc3b2f4628cd4e9e70df5ce740b20, type: 3}
   missionList: {fileID: 1494727495}
   missionDetailsWindow: {fileID: 1653659712}
   commOnly: 0
   imageOnly: 1
-  experimentOnly: 0
   grappleOnly: 0
 --- !u!4 &1256917743
 Transform:
@@ -9599,7 +9565,6 @@ Transform:
   m_Children:
   - {fileID: 2072467861}
   - {fileID: 1411290336}
-  - {fileID: 897282049}
   - {fileID: 990977994}
   m_Father: {fileID: 513783105}
   m_RootOrder: 0

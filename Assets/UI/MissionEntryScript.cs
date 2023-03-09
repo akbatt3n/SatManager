@@ -7,7 +7,7 @@ public class MissionEntryScript : MonoBehaviour {
     
     public GameObject mission;
     public GameObject missionDetailsWindow;
-    public string missionType; // will take 1 of 4 values: "comm", "image", "exp", or "grapple"
+    public string missionType; // will take 1 of 4 values: "comm", "image", or "grapple"
     public Text detailsType;
     public Text detailsDesc;
     public Text detailsReward;
@@ -53,22 +53,6 @@ public class MissionEntryScript : MonoBehaviour {
                 detailsReward.text = "";
             }
             mission.GetComponent<ImageMission>().toggleHighlight();
-        }
-
-        else if (missionType == "exp") {
-            if (GetComponent<Toggle>().isOn) {
-                mission.GetComponent<ExperimentMission>().selected = true;
-                detailsType.text = "Experiment";
-                detailsDesc.text = "Gather data from a satellite within the given parameters.";
-                detailsReward.text = "$" + mission.GetComponent<ExperimentMission>().reward + "K";
-            }
-            else {
-                mission.GetComponent<ExperimentMission>().selected = false;
-                detailsType.text = "";
-                detailsDesc.text = "";
-                detailsReward.text = "";
-            }
-            mission.GetComponent<ExperimentMission>().toggleHighlight();
         }
 
         else if (missionType == "grapple") {

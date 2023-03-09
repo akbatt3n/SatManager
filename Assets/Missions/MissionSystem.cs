@@ -8,12 +8,10 @@ public class MissionSystem : MonoBehaviour {
     public int newMissionTime; // time before a new mission gets added in sec
     public GameObject commMissionPrefab;
     public GameObject imageMissionPrefab;
-    public GameObject experimentMissionPrefab;
     public GameObject grappleMissionPrefab;
 
     public GameObject commMissionBucket;
     public GameObject imageMissionBucket;
-    public GameObject experimentMissionBucket;
     public GameObject grappleMissionBucket;
 
     public GameObject missionListEntryPrefab;
@@ -23,7 +21,6 @@ public class MissionSystem : MonoBehaviour {
     // only 1 of these should be set to true at a time
     public bool commOnly = false;
     public bool imageOnly = false;
-    public bool experimentOnly = false;
     public bool grappleOnly = false;
 
     void Start() {
@@ -48,19 +45,14 @@ public class MissionSystem : MonoBehaviour {
             newImageMission();
             return;
         }
-        else if (experimentOnly) {
-            newExperimentMission();
-            return;
-        }
         else if (grappleOnly) {
             newGrappleMission();
             return;
         }
 
-        float chanceComm = 0.40f;
-        float chanceImage = 0.20f;
-        float chanceExp = 0.30f;
-        float chanceGrapple = 0.10f;
+        float chanceComm = 0.50f;
+        float chanceImage = 0.30f;
+        float chanceGrapple = 0.20f;
 
         float roll = Random.Range(0f, 1f);
 
@@ -69,9 +61,6 @@ public class MissionSystem : MonoBehaviour {
         }
         else if (roll < chanceComm + chanceImage) {
             newImageMission();
-        }
-        else if (roll < chanceComm + chanceImage + chanceExp) {
-            newExperimentMission();
         }
         else {
             newGrappleMission();
@@ -98,16 +87,6 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().missionType = "image";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
         newMission.GetComponent<ImageMission>().listEntry = newEntry;
-    }
-
-    public void newExperimentMission() {
-        GameObject newMission = Instantiate(experimentMissionPrefab, experimentMissionBucket.transform);
-        GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
-        newEntry.GetComponentInChildren<Text>().text = "Experiment";
-        newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
-        newEntry.GetComponent<MissionEntryScript>().mission = newMission;
-        newEntry.GetComponent<MissionEntryScript>().missionType = "exp";
-        newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
     }
 
     public void newGrappleMission() {
