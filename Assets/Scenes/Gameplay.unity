@@ -9579,9 +9579,11 @@ MonoBehaviour:
   missionListEntryPrefab: {fileID: 8187731341980805201, guid: 7e0bc3b2f4628cd4e9e70df5ce740b20, type: 3}
   missionList: {fileID: 1494727495}
   missionDetailsWindow: {fileID: 1653659712}
+  targetNames: []
+  grappleTargetPrefab: {fileID: 1234806070192056125, guid: b3aad0d57cd0402489ef0251de67f5dc, type: 3}
   commOnly: 0
-  imageOnly: 1
-  grappleOnly: 0
+  imageOnly: 0
+  grappleOnly: 1
 --- !u!4 &1256917743
 Transform:
   m_ObjectHideFlags: 0

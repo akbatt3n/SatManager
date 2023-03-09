@@ -18,6 +18,9 @@ public class MissionSystem : MonoBehaviour {
     public GameObject missionList;
     public GameObject missionDetailsWindow;
 
+    public List<string> targetNames = new List<string>();
+    public GameObject grappleTargetPrefab;
+
     // only 1 of these should be set to true at a time
     public bool commOnly = false;
     public bool imageOnly = false;
@@ -91,12 +94,15 @@ public class MissionSystem : MonoBehaviour {
 
     public void newGrappleMission() {
         GameObject newMission = Instantiate(grappleMissionPrefab, grappleMissionBucket.transform);
+        newMission.GetComponent<GrappleMission>().msysObj = gameObject;
+        newMission.GetComponent<GrappleMission>().targetPrefab = grappleTargetPrefab;
         GameObject newEntry = Instantiate(missionListEntryPrefab, missionList.transform);
         newEntry.GetComponentInChildren<Text>().text = "Object Grapple";
         newEntry.GetComponent<Toggle>().group = missionList.GetComponent<ToggleGroup>();
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "grapple";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+
     }
 
 }

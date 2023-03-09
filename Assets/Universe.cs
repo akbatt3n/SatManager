@@ -214,6 +214,8 @@ public class Universe : MonoBehaviour {
                 break;
             case "Grappler":
                 newSatObj = Instantiate(grappleSatPrefab, satContainer.transform);
+                newSatObj.GetComponent<grapplePayload>().grappleMissions = grappleMissionBucket;
+                newSatObj.GetComponent<Satellite>().type = type;
                 break;
             case "Target":
                 newSatObj = Instantiate(grappleTargetPrefab, targetContainer.transform);
@@ -237,6 +239,9 @@ public class Universe : MonoBehaviour {
 
         // deltaV in m/s
         switch (fuel) {
+            case 0:
+                newSat.fuel = 0;
+                break;
             case 1:
                 newSat.fuel = 75;
                 break;

@@ -54,17 +54,18 @@ public class Satellite : MonoBehaviour {
 
     void Start() {
         // this currently requires the z position be zero
-        if (circular) {
-            r = 1000 * scaleFactor * transform.position.magnitude;
-            float v = Mathf.Sqrt(Universe.Instance.G * Universe.Instance.pMass / r);
-            if (transform.position.x < 0) {
-                v = -v;
-            }
-            velocity.Set(0, 0, v/scaleFactor);
-        }
+        // if (circular) {
+        //     r = 1000 * scaleFactor * transform.position.magnitude;
+        //     float v = Mathf.Sqrt(Universe.Instance.G * Universe.Instance.pMass / r);
+        //     if (transform.position.x < 0) {
+        //         v = -v;
+        //     }
+        //     velocity.Set(0, 0, v/scaleFactor);
+        // }
 
         primaryObj = GameObject.FindWithTag("earth");
         primary = primaryObj.GetComponent<Primary>();
+        scaleFactor = Universe.Instance.scaleFactor;
     }
     
     void Update() {
@@ -83,6 +84,9 @@ public class Satellite : MonoBehaviour {
 
         // get direction, normalize, then scale to equal real-life force of gravity
         posVector = (transform.position - primary.transform.position) * scaleFactor;
+        if (posVector == Vector3.zero) {
+            return;
+        }
         gravity = posVector.normalized;
         gravity = -1 * gravity * (Universe.Instance.G * M * Universe.Instance.pMass / (r*r));
 
@@ -108,6 +112,7 @@ public class Satellite : MonoBehaviour {
                 else                        velocity -= (velocity * 0.00000001f * timeFactor);
             }
             transform.position += velocity * timeFactor / scaleFactor;
+
         }
 
         velMag = velocity.magnitude;
