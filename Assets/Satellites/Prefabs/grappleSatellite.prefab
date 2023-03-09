@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1234806070192056119}
   - component: {fileID: 130075415144227094}
   - component: {fileID: 130075415144227095}
+  - component: {fileID: -2821960567891206157}
   m_Layer: 0
   m_Name: grappleSatellite
   m_TagString: Untagged
@@ -844,3 +845,18 @@ MonoBehaviour:
   B: 0
   C: 0
   resolution: 500
+--- !u!114 &-2821960567891206157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234806070192056125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2879fb4318e86434d9200dbcbb7242ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grappleMissions: {fileID: 0}
+  maxDistanceMm: 0.001
+  heldObject: {fileID: 0}

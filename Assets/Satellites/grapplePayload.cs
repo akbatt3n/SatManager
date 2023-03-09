@@ -28,6 +28,6 @@ public class grapplePayload : MonoBehaviour {
     }
 
     void Update() {
-
+        heldObject.transform.position = transform.position;
     }
 }

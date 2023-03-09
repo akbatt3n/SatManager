@@ -79,7 +79,8 @@ public class NewSatMenu : MonoBehaviour {
                 return;
         }
 
-        Universe.Instance.launchSatellite(nameField.text,
+        Universe.Instance.launchSatellite(true,
+                                            nameField.text,
                                             typeSelect.captionText.text,
                                             altitude,
                                             inclination,

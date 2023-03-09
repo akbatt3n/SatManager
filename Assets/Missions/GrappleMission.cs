@@ -6,6 +6,7 @@ public class GrappleMission : MonoBehaviour {
     
     public Satellite target;
     public GameObject targetObj;
+    public GameObject targetPrefab;
     public float minAlt;
     public float maxAlt;
 
@@ -24,8 +25,20 @@ public class GrappleMission : MonoBehaviour {
     public bool selected = false;
 
     public void Start() {
+        // pick random orbit
+        
+
         // create target satellite
+        Universe.Instance.launchSatellite(false,
+                                            nameField.text,
+                                            "Target",
+                                            altitude,
+                                            inclination,
+                                            raan,
+                                            0,
+                                            0);
         // link to mission
+        targetObj = Instantiate(targetPrefab);
     }
 
     public bool checkComplete() {

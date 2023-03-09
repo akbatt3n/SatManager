@@ -1,7 +1,6 @@
 // This script/object is used to hold all the global variables different objects need to interact with
 // such as the mass of the Earth, how fast time is moving, and references to other game objects.
 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +26,7 @@ public class Universe : MonoBehaviour {
     public GameObject commMissionBucket;
     public GameObject imageMissionBucket;
     public GameObject grappleMissionBucket;
-    public GameObject experimentMissionBucket;
+    public GameObject targetContainer;
 
     // gravitational constant
     public float G = 6.67430e-11F;
@@ -72,8 +71,8 @@ public class Universe : MonoBehaviour {
 
     public GameObject imageSatPrefab;
     public GameObject commSatPrefab;
-    public GameObject experimentPrefab;
-    public GameObject grapplePrefab;
+    public GameObject grappleSatPrefab;
+    public GameObject grappleTargetPrefab;
 
     // --------------------
     // Functions
@@ -191,7 +190,7 @@ public class Universe : MonoBehaviour {
         }
     }
 
-    public void launchSatellite(string name, string type, int alt, int inc, int raan, int fuel, int cost) {
+    public void launchSatellite(bool listEntry, string name, string type, int alt, int inc, int raan, int fuel, int cost) {
 
         if (!checkSatNameUnique(name)) {
             Debug.Log("satellite name not unique");
@@ -208,16 +207,16 @@ public class Universe : MonoBehaviour {
                 newSatObj.GetComponent<commPayload>().commMissions = commMissionBucket;
                 newSatObj.GetComponent<Satellite>().type = type;
                 break;
-            case "Experiment":
-                newSatObj = Instantiate(commSatPrefab, satContainer.transform);
-                break;
             case "Imagery":
                 newSatObj = Instantiate(imageSatPrefab, satContainer.transform);
                 newSatObj.GetComponent<imagePayload>().imageMissions = imageMissionBucket;
                 newSatObj.GetComponent<Satellite>().type = type;
                 break;
             case "Grappler":
-                newSatObj = Instantiate(commSatPrefab, satContainer.transform);
+                newSatObj = Instantiate(grappleSatPrefab, satContainer.transform);
+                break;
+            case "Target":
+                newSatObj = Instantiate(grappleTargetPrefab, targetContainer.transform);
                 break;
             default:
                 Debug.Log("type field invalid");
@@ -233,36 +232,38 @@ public class Universe : MonoBehaviour {
         newVelocity *= Mathf.Sqrt(G * pMass / (r * 1000)) / scaleFactor;
         newVelocity = Quaternion.AngleAxis(-inc, newPos) * newVelocity;
         newSat.velocity = newVelocity;
+
         newSat.satName = name;
 
         // deltaV in m/s
         switch (fuel) {
             case 1:
-                newSat.fuel = 50;
+                newSat.fuel = 75;
                 break;
             case 2:
-                newSat.fuel = 125;
+                newSat.fuel = 150;
                 break;
             case 3:
                 newSat.fuel = 500;
                 break;
             case 4:
-                newSat.fuel = 2000;
+                newSat.fuel = 1500;
                 break;
             default:
                 Debug.Log("fuel value not mapped properly");
                 return;
         }
 
-        satListEntry = Instantiate(satListEntryPrefab, satList.transform);
-        satListEntry.GetComponentInChildren<Text>().text = name;
-        satListEntry.name = name;
-        satListEntry.GetComponent<satListEntryScript>().satellite = newSatObj.gameObject;
-        satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
-        satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
-        satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
-        newSat.listEntry = satListEntry;
-        // satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
+        if (listEntry) {
+            satListEntry = Instantiate(satListEntryPrefab, satList.transform);
+            satListEntry.GetComponentInChildren<Text>().text = name;
+            satListEntry.name = name;
+            satListEntry.GetComponent<satListEntryScript>().satellite = newSatObj.gameObject;
+            satListEntry.GetComponent<satListEntryScript>().detailsPanel = detailsPanel;
+            satListEntry.GetComponent<satListEntryScript>().ghost = ghost;
+            satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
+            newSat.listEntry = satListEntry;
+        }
     }
 
     public bool checkSatNameUnique(string name) {
