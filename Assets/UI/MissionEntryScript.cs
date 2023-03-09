@@ -28,7 +28,7 @@ public class MissionEntryScript : MonoBehaviour {
                 mission.GetComponent<CommMission>().selected = true;
                 detailsType.text = "Data Relay";
                 detailsDesc.text = "Use a communication satellite to relay data between 2 points.";
-                detailsReward.text = "$" + mission.GetComponent<CommMission>().reward;
+                detailsReward.text = "$" + mission.GetComponent<CommMission>().reward + "K";
             }
             else {
                 mission.GetComponent<CommMission>().selected = false;
@@ -44,7 +44,7 @@ public class MissionEntryScript : MonoBehaviour {
                 mission.GetComponent<ImageMission>().selected = true;
                 detailsType.text = "Ground Imaging";
                 detailsDesc.text = "Use a imaging satellite to take a picture of a specific point.";
-                detailsReward.text = "$" + mission.GetComponent<ImageMission>().reward;
+                detailsReward.text = "$" + mission.GetComponent<ImageMission>().reward + "K";
             }
             else {
                 mission.GetComponent<ImageMission>().selected = false;
@@ -53,6 +53,38 @@ public class MissionEntryScript : MonoBehaviour {
                 detailsReward.text = "";
             }
             mission.GetComponent<ImageMission>().toggleHighlight();
+        }
+
+        else if (missionType == "exp") {
+            if (GetComponent<Toggle>().isOn) {
+                mission.GetComponent<ExperimentMission>().selected = true;
+                detailsType.text = "Experiment";
+                detailsDesc.text = "Gather data from a satellite within the given parameters.";
+                detailsReward.text = "$" + mission.GetComponent<ExperimentMission>().reward + "K";
+            }
+            else {
+                mission.GetComponent<ExperimentMission>().selected = false;
+                detailsType.text = "";
+                detailsDesc.text = "";
+                detailsReward.text = "";
+            }
+            mission.GetComponent<ExperimentMission>().toggleHighlight();
+        }
+
+        else if (missionType == "grapple") {
+            if (GetComponent<Toggle>().isOn) {
+                mission.GetComponent<GrappleMission>().selected = true;
+                detailsType.text = "Grapple";
+                detailsDesc.text = "Approach another satellite and move it to the target orbit.";
+                detailsReward.text = "$" + mission.GetComponent<GrappleMission>().reward + "K";
+            }
+            else {
+                mission.GetComponent<GrappleMission>().selected = false;
+                detailsType.text = "";
+                detailsDesc.text = "";
+                detailsReward.text = "";
+            }
+            mission.GetComponent<GrappleMission>().toggleHighlight();
         }
     }
 

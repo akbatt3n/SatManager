@@ -273,8 +273,4 @@ public class Universe : MonoBehaviour {
         }
         return true;
     }
-
-    public void destroySat(GameObject satelliteObj) {
-
-    }
 }
