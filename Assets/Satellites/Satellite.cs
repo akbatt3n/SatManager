@@ -71,7 +71,6 @@ public class Satellite : MonoBehaviour {
     void Update() {
         // update time scale
         timeScale = Universe.Instance.timeScale;
-        GetComponent<TrailRenderer>().time = Universe.Instance.trailTime;
 
         // update distance from primary's center, in meters
         r = 1000 * scaleFactor * Vector3.Distance(transform.position, primary.transform.position);
@@ -112,7 +111,7 @@ public class Satellite : MonoBehaviour {
                 else if (altitude < 400)    velocity -= (velocity * 0.0000001f * timeFactor);
                 else                        velocity -= (velocity * 0.00000001f * timeFactor);
             }
-            
+
             transform.position += velocity * timeFactor / scaleFactor;
 
         }
@@ -260,8 +259,8 @@ public class Satellite : MonoBehaviour {
     }
 
     public void showOrbit() {
-        GetComponent<TrailRenderer>().startWidth = 0.1f;
         GetComponent<LineRenderer>().startWidth = 0.03f;
+        GetComponent<MeshRenderer>().enabled = true;
         switch (type) {
             case "Comm":
                 GetComponent<commPayload>().showFootprint();
@@ -275,8 +274,8 @@ public class Satellite : MonoBehaviour {
     }
 
     public void hideOrbit() {
-        GetComponent<TrailRenderer>().startWidth = 0.0f;
         GetComponent<LineRenderer>().startWidth = 0.0f;
+        GetComponent<MeshRenderer>().enabled = false;
         switch (type) {
             case "Comm":
                 GetComponent<commPayload>().hideFootprint();

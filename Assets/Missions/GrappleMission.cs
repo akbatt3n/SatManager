@@ -72,10 +72,7 @@ public class GrappleMission : MonoBehaviour {
                                                         0);
 
         target = targetObj.GetComponent<Satellite>();
-
-        Debug.Log("alt: " + altitude);
-        Debug.Log("inc: " + inclination);
-        Debug.Log("raan: " + raan);
+        target.hideOrbit();
     }
 
     public bool checkComplete() {
