@@ -31,6 +31,7 @@ public class GrappleMission : MonoBehaviour {
         int altitude;
         int inclination;
         int raan;
+
         switch (Random.Range(0, 2)) {
             case 0:
                 altitude = 175 + (int)(450 * Random.Range(0f, 1f));
@@ -61,17 +62,20 @@ public class GrappleMission : MonoBehaviour {
         }
 
         // create target satellite
-        Universe.Instance.launchSatellite(false,
-                                            name,
-                                            "Target",
-                                            altitude,
-                                            inclination,
-                                            raan,
-                                            0,
-                                            0);
-        // link to mission
-        targetObj = Instantiate(targetPrefab);
+        targetObj = Universe.Instance.launchSatellite(false,
+                                                        name,
+                                                        "Target",
+                                                        altitude,
+                                                        inclination,
+                                                        raan,
+                                                        0,
+                                                        0);
+
         target = targetObj.GetComponent<Satellite>();
+
+        Debug.Log("alt: " + altitude);
+        Debug.Log("inc: " + inclination);
+        Debug.Log("raan: " + raan);
     }
 
     public bool checkComplete() {
@@ -80,13 +84,17 @@ public class GrappleMission : MonoBehaviour {
     }
 
     public void toggleHighlight() {
-        if (selected) {
+        if (selected && target != null) {
             // show target sat orbit/position
+            target.showOrbit();
             // show orbital parameters in seperate window
+            msysObj.GetComponent<MissionSystem>().showGrappleTargetParam(this);
         }
-        else {
+        else if (target != null) {
             // hide target sat
+            target.hideOrbit();
             // hide orbital parameter window
+            msysObj.GetComponent<MissionSystem>().hideGrappleTargetParam();
         }
     }
 }

@@ -15,7 +15,7 @@ public class Satellite : MonoBehaviour {
     public float M = 1000;
     // distance to primary
     public float r; // meters
-    public float altitude; // km
+    public float altitude; // km above surface
 
     public GameObject primaryObj;
     public Primary primary;
@@ -89,14 +89,15 @@ public class Satellite : MonoBehaviour {
         }
         gravity = posVector.normalized;
         gravity = -1 * gravity * (Universe.Instance.G * M * Universe.Instance.pMass / (r*r));
+        Debug.DrawRay(transform.position, gravity/10, Color.red);
 
-        
+        // velocity update
         if (timeScale != 0) {
             if (timeScale < 1) timeScale = 1;
 
             float timeFactor = (Time.deltaTime * Universe.Instance.timeScale);
 
-            // get acceleration due to gravity and apply it
+            // get acceleration due to gravity
             velocity += gravity/M * timeFactor / 1000;
 
             // air resistance
@@ -111,9 +112,11 @@ public class Satellite : MonoBehaviour {
                 else if (altitude < 400)    velocity -= (velocity * 0.0000001f * timeFactor);
                 else                        velocity -= (velocity * 0.00000001f * timeFactor);
             }
+            
             transform.position += velocity * timeFactor / scaleFactor;
 
         }
+        Debug.DrawRay(transform.position, velocity, Color.white);
 
         velMag = velocity.magnitude;
         updateOrbitalElements();

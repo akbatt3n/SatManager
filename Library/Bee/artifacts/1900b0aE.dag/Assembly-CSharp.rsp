@@ -396,6 +396,7 @@
 "Assets/UI/MissionEntryScript.cs"
 "Assets/UI/NewSatMenu.cs"
 "Assets/UI/satListEntryScript.cs"
+"Assets/UI/TargetDetails.cs"
 "Assets/Universe.cs"
 -langversion:9.0
 

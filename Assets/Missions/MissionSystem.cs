@@ -17,6 +17,7 @@ public class MissionSystem : MonoBehaviour {
     public GameObject missionListEntryPrefab;
     public GameObject missionList;
     public GameObject missionDetailsWindow;
+    public GameObject grappleTargetDetailsWindow;
 
     public List<string> targetNames = new List<string>();
     public GameObject grappleTargetPrefab;
@@ -31,6 +32,10 @@ public class MissionSystem : MonoBehaviour {
     }
 
     void timerUpdate() {
+        if (Universe.Instance.timeScale == 0) {
+            return;
+        }
+        
         if (newMissionTime < 0f) {
             addMission();
             newMissionTime = Random.Range(30, 240);
@@ -102,7 +107,18 @@ public class MissionSystem : MonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().mission = newMission;
         newEntry.GetComponent<MissionEntryScript>().missionType = "grapple";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
+        newEntry.GetComponent<MissionEntryScript>().missionSystem = this;
 
     }
 
+    public void showGrappleTargetParam(GrappleMission mission) {
+        grappleTargetDetailsWindow.SetActive(true);
+        grappleTargetDetailsWindow.GetComponent<TargetDetails>().satellite = mission.targetObj;
+        grappleTargetDetailsWindow.GetComponent<TargetDetails>().updateValues();
+
+    }
+
+    public void hideGrappleTargetParam() {
+        grappleTargetDetailsWindow.SetActive(false);
+    }
 }

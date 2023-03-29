@@ -7,6 +7,7 @@ public class MissionEntryScript : MonoBehaviour {
     
     public GameObject mission;
     public GameObject missionDetailsWindow;
+    public MissionSystem missionSystem;
     public string missionType; // will take 1 of 4 values: "comm", "image", or "grapple"
     public Text detailsType;
     public Text detailsDesc;
@@ -61,12 +62,14 @@ public class MissionEntryScript : MonoBehaviour {
                 detailsType.text = "Grapple";
                 detailsDesc.text = "Approach another satellite and move it to the target orbit.";
                 detailsReward.text = "$" + mission.GetComponent<GrappleMission>().reward + "K";
+                missionSystem.showGrappleTargetParam(mission.GetComponent<GrappleMission>());
             }
             else {
                 mission.GetComponent<GrappleMission>().selected = false;
                 detailsType.text = "";
                 detailsDesc.text = "";
                 detailsReward.text = "";
+                missionSystem.hideGrappleTargetParam();
             }
             mission.GetComponent<GrappleMission>().toggleHighlight();
         }

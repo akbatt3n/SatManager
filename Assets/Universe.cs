@@ -190,11 +190,11 @@ public class Universe : MonoBehaviour {
         }
     }
 
-    public void launchSatellite(bool listEntry, string name, string type, int alt, int inc, int raan, int fuel, int cost) {
+    public GameObject launchSatellite(bool listEntry, string name, string type, int alt, int inc, int raan, int fuel, int cost) {
 
         if (!checkSatNameUnique(name)) {
             Debug.Log("satellite name not unique");
-            return;
+            return null;
         }
 
         float r = alt + pRadius; // r is in km
@@ -219,10 +219,11 @@ public class Universe : MonoBehaviour {
                 break;
             case "Target":
                 newSatObj = Instantiate(grappleTargetPrefab, targetContainer.transform);
+                newSatObj.GetComponent<Satellite>().type = type;
                 break;
             default:
                 Debug.Log("type field invalid");
-                return;
+                return null;
         }
         Satellite newSat = newSatObj.GetComponent<Satellite>();
 
@@ -256,7 +257,7 @@ public class Universe : MonoBehaviour {
                 break;
             default:
                 Debug.Log("fuel value not mapped properly");
-                return;
+                return null;
         }
 
         if (listEntry) {
@@ -269,6 +270,8 @@ public class Universe : MonoBehaviour {
             satListEntry.GetComponent<Toggle>().group = satList.GetComponent<ToggleGroup>();
             newSat.listEntry = satListEntry;
         }
+
+        return newSatObj;
     }
 
     public bool checkSatNameUnique(string name) {
