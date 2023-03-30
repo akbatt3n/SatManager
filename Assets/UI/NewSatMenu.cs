@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewSatMenu : MonoBehaviour {
     
@@ -25,7 +27,13 @@ public class NewSatMenu : MonoBehaviour {
     private int raan;
 
     public void updateCost(){
+        if (!parseCostFields()) {
+            return;
+        }
 
+        cost = altitude / 2;
+        cost = (int) (cost * Mathf.Max(1f, fuel*0.75f));
+        costDisplay.GetComponent<Text>().text = cost.ToString("C0", CultureInfo.CurrentCulture) + "K";
     }
 
     public void setAltitudeLEO() {
@@ -40,26 +48,26 @@ public class NewSatMenu : MonoBehaviour {
         altitudeField.text = "35,786";
     }
 
-    public void launch() {
-
+    public bool parseNonCostFields() {
         if (nameField.text == "") {
             Debug.Log("Name field is empty");
-            return;
+            return false;
         }
 
-        if (!int.TryParse(altitudeField.text, System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out altitude)) {
-            Debug.Log("alt field invalid, value: " + altitudeField.text);
-            return;
-        }
         if (!int.TryParse(inclinationField.text, System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out inclination)) {
-            Debug.Log("inc field invalid, value: " + inclinationField.text);
-            return;
+            return false;
         }
         if (!int.TryParse(raanField.text, System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out raan)) {
-            Debug.Log("raan field invalid, value: " + raanField.text);
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    public bool parseCostFields() {
+        if (!int.TryParse(altitudeField.text, System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out altitude)) {
+            return false;
+        }
 
         switch (fuelSelect.captionText.text) {
             case "Small":
@@ -76,10 +84,17 @@ public class NewSatMenu : MonoBehaviour {
                 break;
             default:
                 Debug.Log("fuel field invalid");
-                return;
+                return false;
         }
 
-        Universe.Instance.launchSatellite(true,
+        return true;
+    }
+
+    public void launch() {
+
+        if (parseNonCostFields()) {
+            updateCost();
+            Universe.Instance.launchSatellite(true,
                                             nameField.text,
                                             typeSelect.captionText.text,
                                             altitude,
@@ -87,6 +102,7 @@ public class NewSatMenu : MonoBehaviour {
                                             raan,
                                             fuel,
                                             cost);
+        }
     }
 
 }

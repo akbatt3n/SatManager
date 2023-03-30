@@ -3,6 +3,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,7 +64,8 @@ public class Universe : MonoBehaviour {
     public GameObject deltaVInput;
     public GameObject directionInput;
 
-    public int trailTime = 50;
+    public GameObject moneyUI;
+    public int moneyAmount;
 
     // --------------------
     // satellite prefabs
@@ -121,27 +123,21 @@ public class Universe : MonoBehaviour {
         switch (speedSlider.value) {
             case 1:
                 timeSlider = 1;
-                trailTime = 400;
                 break;
             case 2:
                 timeSlider = 10;
-                trailTime = 40;
                 break;
             case 3:
                 timeSlider = 25;
-                trailTime = 15;
                 break;
             case 4:
                 timeSlider = 50;
-                trailTime = 7;
                 break;
             case 5:
                 timeSlider = 100;
-                trailTime = 3;
                 break;
             case 6:
                 timeSlider = 200;
-                trailTime = 1;
                 break;
             default:
                 timeSlider = 1;
@@ -194,6 +190,11 @@ public class Universe : MonoBehaviour {
 
         if (!checkSatNameUnique(name)) {
             Debug.Log("satellite name not unique");
+            return null;
+        }
+
+        if (!reduceMoney(cost)) {
+            Debug.Log("not enough money");
             return null;
         }
 
@@ -282,4 +283,23 @@ public class Universe : MonoBehaviour {
         }
         return true;
     }
+
+    public void addMoney(int amount) {
+        if (amount <= 0) {
+            return;
+        }
+        moneyAmount += amount;
+        moneyUI.GetComponent<Text>().text = moneyAmount.ToString("C0", CultureInfo.CurrentCulture) + "K";
+    }
+
+    public bool reduceMoney(int amount) {
+        if (amount > moneyAmount) {
+            return false;
+        }
+        
+        moneyAmount -= amount;
+        moneyUI.GetComponent<Text>().text = moneyAmount.ToString("C0", CultureInfo.CurrentCulture) + "K";
+        return true;
+    }
+
 }
