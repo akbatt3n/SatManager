@@ -106,6 +106,8 @@ public class Universe : MonoBehaviour {
             satListEntry.GetComponent<satListEntryScript>().toggleHighlight();
             child.gameObject.GetComponent<Satellite>().listEntry = satListEntry;
         }
+
+        updateMoneyDisplay();
     }
 
     public void pauseGame() {
@@ -289,7 +291,7 @@ public class Universe : MonoBehaviour {
             return;
         }
         moneyAmount += amount;
-        moneyUI.GetComponent<Text>().text = moneyAmount.ToString("C0", CultureInfo.CurrentCulture) + "K";
+        updateMoneyDisplay();
     }
 
     public bool reduceMoney(int amount) {
@@ -298,8 +300,12 @@ public class Universe : MonoBehaviour {
         }
         
         moneyAmount -= amount;
-        moneyUI.GetComponent<Text>().text = moneyAmount.ToString("C0", CultureInfo.CurrentCulture) + "K";
+        updateMoneyDisplay();
         return true;
+    }
+
+    public void updateMoneyDisplay() {
+        moneyUI.GetComponent<Text>().text = moneyAmount.ToString("C0", CultureInfo.CurrentCulture) + "K";
     }
 
 }

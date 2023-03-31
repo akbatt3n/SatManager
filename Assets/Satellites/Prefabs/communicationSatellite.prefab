@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugMode: 0
   commMissions: {fileID: 0}
-  sensorMaxAngle: 45
+  sensorMaxAngle: 60
   FOVRadius: 0
   footprint: {fileID: 0}
   minElevation: 5

@@ -12,16 +12,15 @@ public class DetailsPanel : MonoBehaviour {
     private string location = "θ = ";
     private string orientation = "ω = ";
 
-    public GameObject satName, satType, satFuel, semiMajor, eccentricity, inclination, raan, argPeri, tAnomaly;
+    public GameObject satType, satFuel, apo, peri, alt, semiMajor, eccentricity, inclination, raan, argPeri, tAnomaly;
 
     public void updateValues() {
         satScript = satellite.GetComponent<Satellite>();
 
-        satName.GetComponent<Text>().text = "Name:    " + satScript.satName;
         satType.GetComponent<Text>().text = "Payload: " + satScript.type;
-        satFuel.GetComponent<Text>().text = "ΔV:      " + satScript.fuel + " m/s";
+        satFuel.GetComponent<Text>().text = "ΔV:      " + satScript.fuel.ToString("F1") + " m/s";
 
-        semiMajor.GetComponent<Text>().text = "a = " + satScript.a.ToString("F1");
+        alt.GetComponent<Text>().text = "Alt. = " + satScript.altitude.ToString("F1");
         eccentricity.GetComponent<Text>().text = "e = " + satScript.e.ToString("F3");
         inclination.GetComponent<Text>().text = "i = " + satScript.i.ToString("F2");
 
@@ -58,14 +57,15 @@ public class DetailsPanel : MonoBehaviour {
             else {
                 tAnomaly.GetComponent<Text>().text = "θ = " + (Mathf.Round(satScript.tAnomaly * 100f) * 0.01f);
             }
+
+            alt.GetComponent<Text>().text = "Alt. = " + satScript.altitude.ToString("F1");
         }
 
         else if (!satListToggle.GetComponent<ToggleGroup>().AnyTogglesOn()) {
-            satName.GetComponent<Text>().text = "Name:    ";
             satType.GetComponent<Text>().text = "Payload: ";
             satFuel.GetComponent<Text>().text = "ΔV:      ";
 
-            semiMajor.GetComponent<Text>().text = "a = ";
+            alt.GetComponent<Text>().text = "Alt. = ";
             eccentricity.GetComponent<Text>().text = "e = ";
             inclination.GetComponent<Text>().text = "i = ";
             raan.GetComponent<Text>().text = "Ω = ";

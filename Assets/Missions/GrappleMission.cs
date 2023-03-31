@@ -13,9 +13,6 @@ public class GrappleMission : MonoBehaviour {
 
     int sf;
 
-    // reward in thousands of dollars. needs to be balanced
-    public int minReward = 10;
-    public int maxReward = 200;
     public int reward;
 
     public Material pointMaterial;
@@ -37,6 +34,9 @@ public class GrappleMission : MonoBehaviour {
                 altitude = 175 + (int)(450 * Random.Range(0f, 1f));
                 inclination = Random.Range(0, 90);
                 raan = Random.Range(0, 360);
+                reward = (int) (altitude / 2f * Random.Range(0.5f, 1f));
+                minAlt = 0;
+                maxAlt = 50;
                 break;
             case 1:
             default:
@@ -51,6 +51,9 @@ public class GrappleMission : MonoBehaviour {
                         break;
                 }
                 raan = Random.Range(0, 360);
+                reward = 50000 + (inclination * 2);
+                minAlt = altitude + 300;
+                maxAlt = altitude + 1000;
                 break;
         }
 
@@ -75,9 +78,10 @@ public class GrappleMission : MonoBehaviour {
         target.hideOrbit();
     }
 
-    public bool checkComplete() {
-        if (target.altitude > minAlt && target.altitude < maxAlt) return true;
-        else return false;
+    public void Update() {
+        if (target.altitude > minAlt && target.altitude < maxAlt) {
+            complete();
+        }
     }
 
     public void toggleHighlight() {
@@ -93,5 +97,14 @@ public class GrappleMission : MonoBehaviour {
             // hide orbital parameter window
             msysObj.GetComponent<MissionSystem>().hideGrappleTargetParam();
         }
+    }
+
+    public void complete() {
+        // reward money
+        // remove list entry
+        // delete self
+        Universe.Instance.addMoney(reward);
+        listEntry.GetComponent<MissionEntryScript>().delete();
+        Destroy(this.gameObject);
     }
 }

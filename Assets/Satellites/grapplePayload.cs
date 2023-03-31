@@ -28,9 +28,10 @@ public class grapplePayload : MonoBehaviour {
     }
 
     void Update() {
-        if (heldObject != null) {
-            heldObject.transform.position = transform.position;
-            heldObject.GetComponent<Satellite>().velocity = GetComponent<Satellite>().velocity;
+        if (heldObject == null) {
+            return;
         }
+        heldObject.transform.position = transform.position;
+        heldObject.GetComponent<Satellite>().velocity = GetComponent<Satellite>().velocity;
     }
 }

@@ -45,6 +45,7 @@ public class ImageMission : MonoBehaviour {
         // reward money
         // remove list entry
         // delete self
+        Universe.Instance.addMoney(reward);
         listEntry.GetComponent<MissionEntryScript>().delete();
         Destroy(this.gameObject);
     }

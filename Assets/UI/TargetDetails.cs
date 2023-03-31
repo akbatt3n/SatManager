@@ -11,14 +11,14 @@ public class TargetDetails : MonoBehaviour {
     private string location = "θ = ";
     private string orientation = "ω = ";
 
-    public GameObject satName, semiMajor, eccentricity, inclination, raan, argPeri, tAnomaly;
+    public GameObject satName, alt, semiMajor, eccentricity, inclination, raan, argPeri, tAnomaly;
 
     public void updateValues() {
         satScript = satellite.GetComponent<Satellite>();
 
         satName.GetComponent<Text>().text = "Name:    " + satScript.satName;
 
-        semiMajor.GetComponent<Text>().text = "a = " + satScript.a.ToString("F1");
+        alt.GetComponent<Text>().text = "Alt.    = " + satScript.altitude.ToString("F1");
         eccentricity.GetComponent<Text>().text = "e = " + satScript.e.ToString("F3");
         inclination.GetComponent<Text>().text = "i = " + satScript.i.ToString("F2");
 
@@ -55,6 +55,8 @@ public class TargetDetails : MonoBehaviour {
             else {
                 tAnomaly.GetComponent<Text>().text = "θ = " + (Mathf.Round(satScript.tAnomaly * 100f) * 0.01f);
             }
+
+            alt.GetComponent<Text>().text = "Alt.    = " + satScript.altitude.ToString("F1");
         }
     }
 }

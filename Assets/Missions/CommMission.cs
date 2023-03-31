@@ -22,7 +22,7 @@ public class CommMission : MonoBehaviour {
 	public bool selected = false;
 
 	float maxOffset = 10f;
-	float minOffset = -2f;
+	float minOffset = -5f;
 	int offsetRolls = 5;
 
 	void Start() {
@@ -40,7 +40,7 @@ public class CommMission : MonoBehaviour {
 		// this section creates an offset for the 2nd point, in the area of the first, but not too close
 		// "overflows" are fine since we're dealing with spheres and degrees
 		float offset = 0f;
-		// create a somewhat Gaussian distribution for the offset. Maximum 90 degree separation, but that's pretty unlikely
+		// create a somewhat Gaussian distribution for the offset. Maximum 50 degree separation, but that's pretty unlikely
 		// Also a chance to have the offset be negative
 		for (int i = 0; i < offsetRolls; i++) {
 			offset += Random.Range(minOffset, maxOffset);
@@ -85,6 +85,7 @@ public class CommMission : MonoBehaviour {
 		// reward money
 		// remove list entry
 		// delete self
+		Universe.Instance.addMoney(reward);
 		listEntry.GetComponent<MissionEntryScript>().delete();
 		Destroy(this.gameObject);
 	}
