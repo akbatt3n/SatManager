@@ -392,6 +392,7 @@
 "Assets/Satellites/Satellite.cs"
 "Assets/UI/DetailsPanel.cs"
 "Assets/UI/directionToggle.cs"
+"Assets/UI/GrappleButton.cs"
 "Assets/UI/ManeuverPanel.cs"
 "Assets/UI/MissionEntryScript.cs"
 "Assets/UI/NewSatMenu.cs"

@@ -8,6 +8,7 @@ public class DetailsPanel : MonoBehaviour {
     public GameObject satListToggle;
     public GameObject satellite;
     Satellite satScript;
+    public GameObject grappleButton;
 
     private string location = "θ = ";
     private string orientation = "ω = ";
@@ -44,6 +45,14 @@ public class DetailsPanel : MonoBehaviour {
             argPeri.GetComponent<Text>().text = "ω = " + satScript.argPeriapsis.ToString("F1");
             tAnomaly.GetComponent<Text>().text = "θ = " + satScript.tAnomaly.ToString("F1");
         }
+
+        if (satScript.type == "Grappler") {
+            grappleButton.SetActive(true);
+            grappleButton.GetComponent<GrappleButton>().satellite = satellite;
+        }
+        else {
+            grappleButton.SetActive(false);
+        }
     }
 
     void Update() {
@@ -71,6 +80,8 @@ public class DetailsPanel : MonoBehaviour {
             raan.GetComponent<Text>().text = "Ω = ";
             argPeri.GetComponent<Text>().text = "ω = ";
             tAnomaly.GetComponent<Text>().text = "θ = ";
+
+            grappleButton.SetActive(false);
 
             satellite = null;
             satScript = null;
