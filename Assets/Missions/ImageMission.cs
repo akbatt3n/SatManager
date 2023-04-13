@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class ImageMission : MonoBehaviour {
+public class ImageMission : PersistentMonoBehaviour {
 
     int sf;
 

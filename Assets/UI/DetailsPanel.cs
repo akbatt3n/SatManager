@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class DetailsPanel : MonoBehaviour {
+public class DetailsPanel : PersistentMonoBehaviour {
     
     public GameObject satListToggle;
     public GameObject satellite;

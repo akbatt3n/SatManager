@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class MissionSystem : MonoBehaviour {
+public class MissionSystem : PersistentMonoBehaviour {
 
     public int newMissionTime; // time before a new mission gets added in sec
     public GameObject commMissionPrefab;
@@ -58,9 +59,9 @@ public class MissionSystem : MonoBehaviour {
             return;
         }
 
-        float chanceComm = 0.50f;
-        float chanceImage = 0.30f;
-        float chanceGrapple = 0.20f;
+        float chanceComm = 0.30f;
+        float chanceImage = 0.60f;
+        float chanceGrapple = 0.10f;
 
         float roll = Random.Range(0f, 1f);
 

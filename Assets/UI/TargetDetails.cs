@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class TargetDetails : MonoBehaviour {
+public class TargetDetails : PersistentMonoBehaviour {
 
     public GameObject satellite;
     Satellite satScript;

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class Universe : MonoBehaviour {
+public class Universe : PersistentMonoBehaviour {
     
     // this line makes everything in this class global (singleton)
     public static Universe Instance { get; private set;}

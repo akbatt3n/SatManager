@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class CommMission : MonoBehaviour {
+public class CommMission : PersistentMonoBehaviour {
 
 	int sf;
 

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class MissionEntryScript : MonoBehaviour {
+public class MissionEntryScript : PersistentMonoBehaviour {
     
     public GameObject mission;
     public GameObject missionDetailsWindow;

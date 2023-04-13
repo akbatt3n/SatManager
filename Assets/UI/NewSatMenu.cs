@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class NewSatMenu : MonoBehaviour {
+public class NewSatMenu : PersistentMonoBehaviour {
     
     public TMPro.TMP_InputField nameField;
     public TMPro.TMP_Dropdown typeSelect;
@@ -31,7 +32,7 @@ public class NewSatMenu : MonoBehaviour {
             return;
         }
 
-        cost = altitude / 2;
+        cost = (int) (Mathf.Pow(altitude, 2f) / 2f);
         cost = (int) (cost * Mathf.Max(1f, fuel*0.75f));
         costDisplay.GetComponent<Text>().text = cost.ToString("C0", CultureInfo.CurrentCulture) + "K";
     }

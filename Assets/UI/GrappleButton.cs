@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class GrappleButton : MonoBehaviour {
+public class GrappleButton : PersistentMonoBehaviour {
     
     public GameObject satellite;
 

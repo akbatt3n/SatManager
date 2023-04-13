@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZSerializer;
 
-public class satListEntryScript : MonoBehaviour {
+public class satListEntryScript : PersistentMonoBehaviour {
 
     public GameObject satellite;
     public GameObject satHighlightToggle;

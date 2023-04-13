@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5273746021998962703}
   - component: {fileID: 5273746021998962702}
+  - component: {fileID: 2779909200390047512}
   m_Layer: 0
   m_Name: CommMission
   m_TagString: Untagged
@@ -212,10 +213,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7b5cb50ac0c6c43a6f18225bec8f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showSettings: 0
+  isOn: 1
+  groupID: 0
+  autoSync: 1
+  _zuid: 
+  _gozuid: 
   minReward: 10
   maxReward: 200
+  reward: 0
   point1: {fileID: 5273746021090796716}
   point2: {fileID: 5273746021246270400}
   pointMaterial: {fileID: 2100000, guid: c72c1a750a3a98d4dade8b8852fdc120, type: 2}
   highlightedPointMaterial: {fileID: 2100000, guid: 436557f9b18cb3b40981ebd231357cfa, type: 2}
-  reward: 0
+  listEntry: {fileID: 0}
+  selected: 0
+--- !u!114 &2779909200390047512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273746021998962700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 
+  _gozuid: 
+  serializedComponents:
+  - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 5273746021998962703}
+    zuid: 

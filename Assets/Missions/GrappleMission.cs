@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class GrappleMission : MonoBehaviour {
+public class GrappleMission : PersistentMonoBehaviour {
     
     public Satellite target;
     public GameObject targetObj;
@@ -34,7 +35,7 @@ public class GrappleMission : MonoBehaviour {
                 altitude = 175 + (int)(450 * Random.Range(0f, 1f));
                 inclination = Random.Range(0, 90);
                 raan = Random.Range(0, 360);
-                reward = (int) (altitude / 2f * Random.Range(0.5f, 1f));
+                reward = (int) (Mathf.Pow(altitude, 2f) / 2f * Random.Range(0.75f, 1.25f));
                 minAlt = 0;
                 maxAlt = 50;
                 break;

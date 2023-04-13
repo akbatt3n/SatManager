@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class Satellite : MonoBehaviour {
+public class Satellite : PersistentMonoBehaviour {
 
     public string type;
     public string satName;
