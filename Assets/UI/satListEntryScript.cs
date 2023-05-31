@@ -10,6 +10,7 @@ public class satListEntryScript : PersistentMonoBehaviour {
     public GameObject satHighlightToggle;
     public GameObject detailsPanel;
     public GameObject ghost;
+    public GameObject label;
 
     public void toggleHighlight() {
         if (satHighlightToggle.GetComponent<Toggle>().isOn) {
@@ -27,4 +28,10 @@ public class satListEntryScript : PersistentMonoBehaviour {
             ghost.GetComponent<GhostPath>().selectedSat = satellite;
         }
     }
+
+    public void loadText() {
+        label.AddComponent(typeof(Text));
+        label.GetComponent<Text>().text = this.name;
+    }
+
 }

@@ -32,7 +32,7 @@ public class NewSatMenu : PersistentMonoBehaviour {
             return;
         }
 
-        cost = (int) (Mathf.Pow(altitude, 2f) / 2f);
+        cost = (int) (Mathf.Pow(altitude, 2f) / 4f);
         cost = (int) (cost * Mathf.Max(1f, fuel*0.75f));
         costDisplay.GetComponent<Text>().text = cost.ToString("C0", CultureInfo.CurrentCulture) + "K";
     }

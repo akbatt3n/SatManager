@@ -591,8 +591,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: 7b72ae3c4dd589d499d826c1a8b64697
-  _gozuid: b94f5aaba6f20e044b2687fe4cae86df
+  _zuid: 1c2fc20035b0b584d977b37d4a51064a
+  _gozuid: 1458c10dffc4fc94786d94c556eacb0b
   commMissionBucket: {fileID: 2072467860}
   imageMissionBucket: {fileID: 1411290335}
   grappleMissionBucket: {fileID: 990977993}
@@ -603,7 +603,6 @@ MonoBehaviour:
   timeSlider: 0
   pMass: 5.9722e+24
   pRadius: 6371
-  playerMoney: 100
   speedReadout: {fileID: 922641958}
   speedSlider: {fileID: 573214985}
   satList: {fileID: 365116020}
@@ -614,7 +613,7 @@ MonoBehaviour:
   deltaVInput: {fileID: 837803168}
   directionInput: {fileID: 462898409}
   moneyUI: {fileID: 276410735}
-  moneyAmount: 1000
+  moneyAmount: 50000
   imageSatPrefab: {fileID: 5327445718484871209, guid: 46d8179e418019e4fbd60572364b9348, type: 3}
   commSatPrefab: {fileID: 1234806070192056125, guid: 28ad9213d87e10146af1547b76b46a29, type: 3}
   grappleSatPrefab: {fileID: 1234806070192056125, guid: a6e838131cc5eba499f93474d3f4cad3, type: 3}
@@ -1094,9 +1093,9 @@ RectTransform:
   m_Father: {fileID: 610559605}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -188.25}
   m_SizeDelta: {x: 175, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143419216
@@ -1327,9 +1326,9 @@ RectTransform:
   m_Father: {fileID: 610559605}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -86.75}
   m_SizeDelta: {x: 175, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152037826
@@ -1376,13 +1375,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 610559604}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 610559609}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2205,9 +2204,9 @@ RectTransform:
   m_Father: {fileID: 610559605}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -32.5}
   m_SizeDelta: {x: 175, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271346812
@@ -2363,7 +2362,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: d1ae646cbc78f97419e782a5e22e70a2
+  _zuid: 4efcda3b6c6091644a6a5f680e75730f
   _gozuid: 2dd42ff318294614a9b32a1c50203955
   serializedComponents:
   - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -2516,8 +2515,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: b417d0e0314337c42a69643338a32038
-  _gozuid: 7037e9d8291b2a644989feeca5543980
+  _zuid: b7e75bc5c83d9024081c9aa52993cd54
+  _gozuid: 35fa50b9115ba0046a7024df25a62ac8
   satellite: {fileID: 0}
 --- !u!114 &304294903
 MonoBehaviour:
@@ -2729,6 +2728,7 @@ GameObject:
   - component: {fileID: 365116021}
   - component: {fileID: 365116022}
   - component: {fileID: 365116023}
+  - component: {fileID: 365116024}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2754,7 +2754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000371933, y: -0.000029403463}
+  m_AnchoredPosition: {x: 2.9999685, y: -0.000029403463}
   m_SizeDelta: {x: -3, y: 180}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &365116022
@@ -2796,6 +2796,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 1
+--- !u!114 &365116024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365116020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: d98deb3d90a28604cb2673ecff16292b
+  _gozuid: 8ac32c8aeaca08e4facd714c30a093d3
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 365116021}
+    zuid: 1462db7598990544484c16add05eda3d
 --- !u!1 &396555140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,8 +3663,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: 1e7d7af6a5330bc4fb1d5ee596bef220
-  _gozuid: 92b7932c3e39e4441bb032a444590733
+  _zuid: d40fa80a345413841936016f50c75591
+  _gozuid: 4a192014c908b6f44af20febb418eeb7
   direction: antinormal
 --- !u!1 &470352208
 GameObject:
@@ -3971,9 +4009,9 @@ RectTransform:
   m_Father: {fileID: 610559605}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -137.5}
   m_SizeDelta: {x: 175, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503232736
@@ -4019,7 +4057,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 503232737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610559609}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &503232737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4281,7 +4331,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: c4a5e1c96e93b2e4dbcf6497d3f8a607
+  _zuid: 5a1c8df2283bc4e47b8f81ce4a34f1d1
   _gozuid: c267f3b149349974ba95b4324b5e462a
   serializedComponents:
   - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -4408,8 +4458,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: 46298f876e7421a40b877ef2bb733d40
-  _gozuid: 0387949219bd5a04eb15f4fbaed2a446
+  _zuid: fb1cde8c60de4e343a1babab6d0f8d0c
+  _gozuid: f7f294b9c05feed4eb3b31eb9ff2747f
   direction: normal
 --- !u!1 &518042139
 GameObject:
@@ -4875,7 +4925,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: 7043fbbbfd7a2994d8e3dadd2db5ec04
+  _zuid: 277dda13e9622f84fadddde634d3cb40
   _gozuid: f9621a4c445f7a4478f4de93e528f75e
   serializedComponents:
   - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -4895,6 +4945,7 @@ GameObject:
   - component: {fileID: 575435509}
   - component: {fileID: 575435508}
   - component: {fileID: 575435507}
+  - component: {fileID: 575435510}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -4974,6 +5025,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575435505}
   m_CullTransparentMesh: 1
+--- !u!114 &575435510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575435505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 65bb1d83f22d4a0498f8b8f60b657b32
+  _gozuid: 9ddc5e38603a40342b8b9dc194c77e6d
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 575435506}
+    zuid: 0e63af518e2de754b9105d44f01a8264
+  - typeFullName: UnityEngine.CanvasRenderer, UnityEngine.UIModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 575435509}
+    zuid: 184f47a39dfff3d4fb1b5856c9c1cd05
 --- !u!1 &580216366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,13 +5278,14 @@ GameObject:
   - component: {fileID: 610559607}
   - component: {fileID: 610559606}
   - component: {fileID: 610559608}
+  - component: {fileID: 610559609}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &610559605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5279,6 +5374,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &610559609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610559604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87dd32f8e45ff2e4586793c9b1106187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &613826329
 GameObject:
   m_ObjectHideFlags: 0
@@ -6369,8 +6476,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: ac7f899d970ca334ca5a1b818abe162e
-  _gozuid: 54deb724116be544b93f2f02ce65df27
+  _zuid: fb36275b401ee2f4e884a860473e2596
+  _gozuid: 0a1bfd54ff5642040b7208ce4e14318c
   direction: retrograde
 --- !u!1 &746105693
 GameObject:
@@ -6595,8 +6702,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: acbf9804936a1a7498f274b30d6fc309
-  _gozuid: 764d89c00576f9a4baca7db17f60167e
+  _zuid: 8bd48ecd66e90264fb769087b95fde44
+  _gozuid: 949e024d28736624c9a4532eb105b0d6
   direction: prograde
 --- !u!1 &817863198
 GameObject:
@@ -6610,6 +6717,7 @@ GameObject:
   - component: {fileID: 817863201}
   - component: {fileID: 817863200}
   - component: {fileID: 817863199}
+  - component: {fileID: 817863203}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -6711,6 +6819,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &817863203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817863198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28d408dc15bc164eb5fea9d9dca3d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 610559604}
+  pauseMenuUp: 0
 --- !u!1 &827671405
 GameObject:
   m_ObjectHideFlags: 0
@@ -7468,7 +7590,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: 91c72cf15457f8049b012f49b9f138f3
+  _zuid: ee3aa9ad1f41ff044a3588da80c4fe25
   _gozuid: 07f637823fe81da40aa1d445546d6dbe
   serializedComponents:
   - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -7917,6 +8039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990977994}
+  - component: {fileID: 990977995}
   m_Layer: 0
   m_Name: grappleMissions
   m_TagString: Untagged
@@ -7939,6 +8062,44 @@ Transform:
   m_Father: {fileID: 1256917743}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &990977995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990977993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 6ce1dab06334dd44db9025d7a97669a8
+  _gozuid: 3ac16adc2870bb041a631138159b72be
+  serializedComponents:
+  - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 990977994}
+    zuid: 8dfe51b6381e7714cb321a91ffd77da8
 --- !u!1 &996448204
 GameObject:
   m_ObjectHideFlags: 0
@@ -8132,6 +8293,7 @@ GameObject:
   - component: {fileID: 1010642878}
   - component: {fileID: 1010642877}
   - component: {fileID: 1010642876}
+  - component: {fileID: 1010642879}
   m_Layer: 5
   m_Name: MissionList
   m_TagString: Untagged
@@ -8230,6 +8392,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010642874}
   m_CullTransparentMesh: 1
+--- !u!114 &1010642879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010642874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 628d3a4f3ce7422488b8dcfa33af181b
+  _gozuid: d15bac7a60118064ca3b4fae7b60fca5
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1010642875}
+    zuid: fe06e83a97ec5e440b1a86c2cb1acca8
+  - typeFullName: UnityEngine.CanvasRenderer, UnityEngine.UIModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1010642878}
+    zuid: 3c481064b76badd4fb0bb701e76cf71c
 --- !u!1 &1013326622
 GameObject:
   m_ObjectHideFlags: 0
@@ -9001,7 +9206,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: 82c33f1001f2c6b459622a27549d7409
+  _zuid: 51f95714174d5ab479a71ca71509c98b
   _gozuid: 16ac0f4ccdae7e447ba04f5d12ce6a5d
   serializedComponents:
   - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -10236,8 +10441,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: cfab2b849ed77f34cb9247e0d454557b
-  _gozuid: a82373ec57a5b264b905ec9c20f7888a
+  _zuid: 4fa5dc6072ec64349aefec8bf7f8128a
+  _gozuid: 13fa0da3011dc244693da557de854c57
   newMissionTime: 0
   commMissionPrefab: {fileID: 5273746021998962700, guid: 668bdf68bfaa9f548a481e7864230708, type: 3}
   imageMissionPrefab: {fileID: 8935938367904245680, guid: 4a4a9370ccc33d646854cf34abc31ef5, type: 3}
@@ -10252,7 +10457,7 @@ MonoBehaviour:
   targetNames: []
   grappleTargetPrefab: {fileID: 1234806070192056125, guid: b3aad0d57cd0402489ef0251de67f5dc, type: 3}
   commOnly: 0
-  imageOnly: 0
+  imageOnly: 1
   grappleOnly: 0
 --- !u!4 &1256917743
 Transform:
@@ -10375,6 +10580,7 @@ GameObject:
   - component: {fileID: 1257589336}
   - component: {fileID: 1257589335}
   - component: {fileID: 1257589334}
+  - component: {fileID: 1257589337}
   m_Layer: 5
   m_Name: SatelliteList
   m_TagString: Untagged
@@ -10473,6 +10679,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257589332}
   m_CullTransparentMesh: 1
+--- !u!114 &1257589337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257589332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: ef03ff33cb0b25243b156af38cead0c5
+  _gozuid: 6753ce86575806d47a5b695d0346425c
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1257589333}
+    zuid: 858d7a978799aa54491e2e63f9aab042
+  - typeFullName: UnityEngine.CanvasRenderer, UnityEngine.UIModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1257589336}
+    zuid: 969cf18f0597ed24f8c9f9d353a79a24
 --- !u!1 &1336203444
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,8 +10939,8 @@ MonoBehaviour:
   isOn: 1
   groupID: 0
   autoSync: 1
-  _zuid: d381875e3354d5646b7fb30e606d01ae
-  _gozuid: dc8dd1c5e9b4f9c4e8f394a6bbe4e32f
+  _zuid: 663768010f2606a46bb9615ab9f4bf16
+  _gozuid: 0fa93c6e7a54c16448c4c1d03ce20239
   satListToggle: {fileID: 365116020}
   satellite: {fileID: 0}
   grappleButton: {fileID: 1737607155}
@@ -10821,6 +11070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411290336}
+  - component: {fileID: 1411290337}
   m_Layer: 0
   m_Name: imageMissions
   m_TagString: Untagged
@@ -10843,6 +11093,44 @@ Transform:
   m_Father: {fileID: 1256917743}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1411290337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411290335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 7c20543f4c0439e438e740a8b68e1999
+  _gozuid: b9d3bba54d5bb3742b83bb6967eca9d3
+  serializedComponents:
+  - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1411290336}
+    zuid: 4bd4e55e0862f2b42bc9f72eb351fcec
 --- !u!1 &1418006582
 GameObject:
   m_ObjectHideFlags: 0
@@ -11523,6 +11811,7 @@ GameObject:
   - component: {fileID: 1494727496}
   - component: {fileID: 1494727498}
   - component: {fileID: 1494727497}
+  - component: {fileID: 1494727499}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -11589,6 +11878,44 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &1494727499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494727495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 7ea8d05890611e94da2bb9995ab54dee
+  _gozuid: 1d277e04c0b205a4ebd3d5b2b9bc5675
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1494727496}
+    zuid: 99a301e5e31c15942bf5840e654fe1df
 --- !u!1 &1504858859
 GameObject:
   m_ObjectHideFlags: 0
@@ -14800,7 +15127,7 @@ MonoBehaviour:
     targetZUIDs: []
   showSettings: 0
   groupID: 0
-  _zuid: b631260d6125a944e98983d30ae117a1
+  _zuid: 21503eaea9debc94db3c7dc8a1350943
   _gozuid: 7bec3575fb914ac4d9ecc10f7c738b7e
   serializedComponents:
   - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -15740,6 +16067,7 @@ GameObject:
   - component: {fileID: 1937361002}
   - component: {fileID: 1937361001}
   - component: {fileID: 1937361000}
+  - component: {fileID: 1937361003}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -15819,6 +16147,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937360998}
   m_CullTransparentMesh: 1
+--- !u!114 &1937361003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937360998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 15be81b7d7e761b44b4a13c9a4f15975
+  _gozuid: 1c30f49a6be03ce4ba6477ec33209a52
+  serializedComponents:
+  - typeFullName: UnityEngine.RectTransform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1937360999}
+    zuid: f9aca40c1517b7e4686d2674c2d562d2
+  - typeFullName: UnityEngine.CanvasRenderer, UnityEngine.UIModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 1937361002}
+    zuid: ededa90e2712905498b4017a7c9417c0
 --- !u!1 &1946918037
 GameObject:
   m_ObjectHideFlags: 0
@@ -16800,6 +17171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2072467861}
+  - component: {fileID: 2072467862}
   m_Layer: 0
   m_Name: commMissions
   m_TagString: Untagged
@@ -16822,6 +17194,44 @@ Transform:
   m_Father: {fileID: 1256917743}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2072467862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072467860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3dbe3a42223b24a8cc44e36ba653fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onPreSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPreLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostSave:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  onPostLoad:
+    m_PersistentCalls:
+      m_Calls: []
+    targetZUIDs: []
+  showSettings: 0
+  groupID: 0
+  _zuid: 0285587e2df4cc443b67c618e660af7e
+  _gozuid: 3046facbb5722c747b2e00fd8548fdf3
+  serializedComponents:
+  - typeFullName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    persistenceType: 0
+    component: {fileID: 2072467861}
+    zuid: 927cb84e5cf718941bf8335a6b5d5f64
 --- !u!1 &2091193405
 GameObject:
   m_ObjectHideFlags: 0
@@ -17232,15 +17642,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8665921575940962781, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: _zuid
-      value: 327b6c3478e4af54b8f9dc56f5ce3ab8
+      value: 608ddbeba9d221e468230f6202156a68
       objectReference: {fileID: 0}
     - target: {fileID: -8665921575940962781, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: _gozuid
-      value: 3e8c0cb209dbbc3439fc1b4d8b8502b5
+      value: 660c6fd7cb5750040b7002cf6249d7e6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8665921575940962781, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: showSettings
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8665921575940962781, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: serializedComponents.Array.data[0].zuid
-      value: 6f4ae27d29b0b744b88c3684f6572d52
+      value: 393f40d010f0d784da910b990cab7d6d
+      objectReference: {fileID: 0}
+    - target: {fileID: 420416377305116443, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: 988d76b6bce08804ea41470a3446a368
+      objectReference: {fileID: 0}
+    - target: {fileID: 420416377305116443, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: 9ade8e5a70e636c44ad5e36b19f0a765
+      objectReference: {fileID: 0}
+    - target: {fileID: 420416377305116443, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: ce4e14c499f8d274bb80187abb0c8149
+      objectReference: {fileID: 0}
+    - target: {fileID: 420416377305116443, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[1].zuid
+      value: 4c420b1e442f3c74093889d76915391f
       objectReference: {fileID: 0}
     - target: {fileID: 924836422469021451, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: m_Name
@@ -17358,18 +17788,66 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 2970983814780422493, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: cf1aa1b545ddd6c45a81589ae8718bc9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970983814780422493, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: e2d8bc914c8927140931d3368c853e4f
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970983814780422493, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: showSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970983814780422493, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: b071f6606f782bb459837f1926a5dbdf
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970983814780422493, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[1].zuid
+      value: eae6ca649d5e77a4886d2a651b526115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261672835057143813, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: 6372c6737ccc0b54e89fb7d4cc44d263
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261672835057143813, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: e151643f9cf3f2041bda4238ecb0dedd
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261672835057143813, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: 0eb93e5d7ae907b4985efd9ef1bf735c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4261672835057143813, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[1].zuid
+      value: 5525378dd02494b43b3855c4c9f4eae7
+      objectReference: {fileID: 0}
     - target: {fileID: 5149453014236045701, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: _zuid
-      value: 48a83578624fc72468f5029808d223db
+      value: 60774e11044eb5e4582dda2d744fa07d
       objectReference: {fileID: 0}
     - target: {fileID: 5149453014236045701, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: _gozuid
-      value: 3e8c0cb209dbbc3439fc1b4d8b8502b5
+      value: 660c6fd7cb5750040b7002cf6249d7e6
       objectReference: {fileID: 0}
     - target: {fileID: 5149453014236045701, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: satHighlightToggle
       value: 
       objectReference: {fileID: 1067970879}
+    - target: {fileID: 5252064825313236177, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: 6176d040fb79c894bb94a25adbd3139a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252064825313236177, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: e016872f71831d04798e8b5abfaddf79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252064825313236177, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: e224d1f3daacfe047951099fe0b24df7
+      objectReference: {fileID: 0}
     - target: {fileID: 5878170137778364634, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: m_IsOn
       value: 0
@@ -17386,6 +17864,22 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: toggleHighlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7681171091840018935, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: 2c814ff1d3d15784dbf5948861119f28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681171091840018935, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: 63e1c6629cc50f3439e2e4e08ea71c3c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681171091840018935, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: e42f861c963a3b7478a7b624d618ab9c
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681171091840018935, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[1].zuid
+      value: d40f983c25f5a7c49b8789194ac2411c
+      objectReference: {fileID: 0}
     - target: {fileID: 8085013495934705223, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: m_Type
       value: 1
@@ -17401,6 +17895,22 @@ PrefabInstance:
     - target: {fileID: 8085013495934705223, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
       propertyPath: m_Color.r
       value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677671681142357374, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _zuid
+      value: e98c091c7bfd47045bc45a547ff06cb1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677671681142357374, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: _gozuid
+      value: 7ed129795512fbe4d895ee09b00f3c6a
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677671681142357374, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[0].zuid
+      value: dc20ca018e32bcc4eafaea9e590077ae
+      objectReference: {fileID: 0}
+    - target: {fileID: 8677671681142357374, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}
+      propertyPath: serializedComponents.Array.data[1].zuid
+      value: cb250504ebbc65e41886e0f17dca0690
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0188dd162a7fc544491152c87bf68ace, type: 3}

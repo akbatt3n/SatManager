@@ -45,10 +45,6 @@ public class Universe : PersistentMonoBehaviour {
     // radius of Earth, km
     public float pRadius = 6371F;
 
-    // money the player has, in thousands of dollars
-    public int playerMoney = 100;
-
-
     //---------------------
     // UI variables
     //---------------------

@@ -85,6 +85,7 @@ public class MissionSystem : PersistentMonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().missionType = "comm";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
         newMission.GetComponent<CommMission>().listEntry = newEntry;
+        newMission.GetComponent<CommMission>().init();
     }
 
     public void newImageMission() {
@@ -96,6 +97,7 @@ public class MissionSystem : PersistentMonoBehaviour {
         newEntry.GetComponent<MissionEntryScript>().missionType = "image";
         newEntry.GetComponent<MissionEntryScript>().missionDetailsWindow = missionDetailsWindow;
         newMission.GetComponent<ImageMission>().listEntry = newEntry;
+        newMission.GetComponent<ImageMission>().init();
     }
 
     public void newGrappleMission() {

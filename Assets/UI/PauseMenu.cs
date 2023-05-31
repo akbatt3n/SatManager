@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
-public class PauseMenu : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class PauseMenu : MonoBehaviour {
+    
+    public void save() {
+        ZSerialize.SaveScene();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void load() {
+        ZSerialize.LoadScene();
     }
+
 }

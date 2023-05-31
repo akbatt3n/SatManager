@@ -11,7 +11,6 @@ public sealed class UniverseZSerializer : ZSerializer.Internal.ZSerializer
     public System.Int32 timeSlider;
     public System.Single pMass;
     public System.Single pRadius;
-    public System.Int32 playerMoney;
     public UnityEngine.UI.Text speedReadout;
     public UnityEngine.UI.Slider speedSlider;
     public UnityEngine.GameObject satList;
@@ -42,7 +41,6 @@ public sealed class UniverseZSerializer : ZSerializer.Internal.ZSerializer
          timeSlider = (System.Int32)typeof(Universe).GetField("timeSlider").GetValue(instance);
          pMass = (System.Single)typeof(Universe).GetField("pMass").GetValue(instance);
          pRadius = (System.Single)typeof(Universe).GetField("pRadius").GetValue(instance);
-         playerMoney = (System.Int32)typeof(Universe).GetField("playerMoney").GetValue(instance);
          speedReadout = (UnityEngine.UI.Text)typeof(Universe).GetField("speedReadout").GetValue(instance);
          speedSlider = (UnityEngine.UI.Slider)typeof(Universe).GetField("speedSlider").GetValue(instance);
          satList = (UnityEngine.GameObject)typeof(Universe).GetField("satList").GetValue(instance);
@@ -74,7 +72,6 @@ public sealed class UniverseZSerializer : ZSerializer.Internal.ZSerializer
          typeof(Universe).GetField("timeSlider").SetValue(component, timeSlider);
          typeof(Universe).GetField("pMass").SetValue(component, pMass);
          typeof(Universe).GetField("pRadius").SetValue(component, pRadius);
-         typeof(Universe).GetField("playerMoney").SetValue(component, playerMoney);
          typeof(Universe).GetField("speedReadout").SetValue(component, speedReadout);
          typeof(Universe).GetField("speedSlider").SetValue(component, speedSlider);
          typeof(Universe).GetField("satList").SetValue(component, satList);

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZSerializer;
 
 [RequireComponent (typeof(LineRenderer))]
-public class OrbitPath : MonoBehaviour {
+public class OrbitPath : PersistentMonoBehaviour {
 
 	public float A;
 	public float B;

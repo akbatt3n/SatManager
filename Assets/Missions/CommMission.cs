@@ -28,7 +28,11 @@ public class CommMission : PersistentMonoBehaviour {
 
 	void Start() {
 		sf = Universe.Instance.scaleFactor;
+	}
 
+	public void init() {
+		sf = Universe.Instance.scaleFactor;
+		
 		float lon = Random.Range(-179.0f, 180.0f);
 		float lat = Random.Range(-89.0f, 89.0f);
 
